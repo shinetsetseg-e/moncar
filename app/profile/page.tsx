@@ -1,3 +1,4 @@
+import { Form } from "antd";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -11,29 +12,31 @@ export default function ProfilePage() {
       <div className="flex flex-col gap-5">
         <div className="rounded-xl border border-gray-200 bg-white p-6">
           <div className="mb-5 border-b border-gray-100 pb-4 text-base font-bold text-gray-900">Хувийн мэдээлэл</div>
-          <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="flex flex-col gap-1">
-              <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нэр</label>
-              <Input defaultValue="Батбаяр" />
+          <Form component="div" className="contents">
+            <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нэр</label>
+                <Input defaultValue="Батбаяр" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Овог</label>
+                <Input defaultValue="Дорж" />
+              </div>
             </div>
-            <div className="flex flex-col gap-1">
-              <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Овог</label>
-              <Input defaultValue="Дорж" />
+            <div className="mb-2 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
+                <Input defaultValue="+976 9900 0000" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">И-мэйл</label>
+                <Input defaultValue="batbayar@mail.mn" />
+              </div>
             </div>
-          </div>
-          <div className="mb-2 grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="flex flex-col gap-1">
-              <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
-              <Input defaultValue="+976 9900 0000" />
+            <div className="mt-2 flex justify-end">
+              <Button>Хадгалах</Button>
             </div>
-            <div className="flex flex-col gap-1">
-              <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">И-мэйл</label>
-              <Input defaultValue="batbayar@mail.mn" />
-            </div>
-          </div>
-          <div className="mt-2 flex justify-end">
-            <Button>Хадгалах</Button>
-          </div>
+          </Form>
         </div>
 
         <div className="rounded-xl border border-gray-200 bg-white p-6">

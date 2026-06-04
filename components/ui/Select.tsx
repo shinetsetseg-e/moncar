@@ -1,26 +1,131 @@
-import type { SelectHTMLAttributes } from "react";
+"use client";
+
+import { Children, isValidElement, useMemo } from "react";
+import type { ChangeEvent, ReactNode, SelectHTMLAttributes } from "react";
+import { Select as AntSelect } from "antd";
+import type { SelectProps as AntSelectProps } from "antd";
 import { cn } from "@/lib/utils";
 
-interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
-  className?: string;
+type SelectVariant = "default" | "compact" | "hero";
+type OptionValue = string | number;
+
+interface SelectOption {
+  disabled?: boolean;
+  label: ReactNode;
+  value: OptionValue;
 }
 
-export default function Select({ className, children, ...props }: Props) {
+interface Props extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "size"> {
+  className?: string;
+  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
+  uiVariant?: SelectVariant;
+}
+
+function optionLabelToString(label: ReactNode) {
+  if (typeof label === "string" || typeof label === "number") {
+    return String(label);
+  }
+
+  return "";
+}
+
+function getOptions(children: ReactNode) {
+  return Children.toArray(children).flatMap((child) => {
+    if (!isValidElement<{ children?: ReactNode; disabled?: boolean; value?: OptionValue }>(child)) {
+      return [];
+    }
+
+    const label = child.props.children;
+    const value = child.props.value ?? optionLabelToString(label);
+
+    return [
+      {
+        disabled: child.props.disabled,
+        label,
+        value,
+      } satisfies SelectOption,
+    ];
+  });
+}
+
+export default function Select({
+  children,
+  className,
+  defaultValue,
+  disabled,
+  id,
+  name,
+  onBlur,
+  onChange,
+  onFocus,
+  style,
+  title,
+  value,
+  uiVariant = "default",
+  ...props
+}: Props) {
+  const options = useMemo(() => getOptions(children), [children]);
+
+  const fallbackValue = options.find((option) => !option.disabled)?.value;
+  const resolvedDefaultValue = value === undefined && defaultValue === undefined ? fallbackValue : defaultValue;
+  const variantStyles =
+    uiVariant === "hero"
+      ? {
+          minHeight: 48,
+          paddingInline: 16,
+          backgroundColor: "transparent",
+          borderRadius: 16,
+          boxShadow: "none",
+        }
+      : uiVariant === "compact"
+        ? {
+            minHeight: 34,
+            paddingInline: 12,
+          }
+        : undefined;
+
+  const selectProps = props as unknown as Omit<
+    AntSelectProps<OptionValue, SelectOption>,
+    "options" | "defaultValue" | "onChange" | "value"
+  >;
+
   return (
-    <select
-      className={cn(
-        "w-full appearance-none rounded-lg border-[1.5px] border-gray-300 bg-white bg-no-repeat pr-8 pl-[14px] py-2.5 text-sm text-gray-900 outline-none transition-[border,box-shadow]",
-        "focus:border-primary-600 focus:shadow-[0_0_0_3px_var(--primary-200)]",
-        className,
-      )}
-      style={{
-        backgroundImage:
-          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2398A2B3' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
-        backgroundPosition: "right 10px center",
+    <AntSelect<OptionValue, SelectOption>
+      {...selectProps}
+      aria-labelledby={props["aria-labelledby"]}
+      className={cn("w-full", uiVariant === "hero" && "h-12", className)}
+      classNames={{
+        content: cn(uiVariant === "hero" ? "text-sm font-semibold text-gray-800" : "text-sm text-gray-900", uiVariant === "compact" && "text-[13px] text-gray-700"),
+        placeholder: uiVariant === "hero" ? "text-sm font-semibold text-gray-800" : "text-sm text-gray-400",
+        root: cn(
+          uiVariant === "default" && "rounded-lg",
+          uiVariant === "compact" && "rounded-lg",
+          uiVariant === "hero" && "rounded-2xl bg-transparent",
+        ),
       }}
-      {...props}
-    >
-      {children}
-    </select>
+      defaultValue={resolvedDefaultValue as OptionValue | undefined}
+      disabled={disabled}
+      getPopupContainer={(node) => node.parentElement ?? document.body}
+      id={id}
+      onBlur={onBlur}
+      onChange={(nextValue) => {
+        onChange?.({
+          target: {
+            name,
+            value: String(nextValue),
+          },
+        } as ChangeEvent<HTMLSelectElement>);
+      }}
+      onFocus={onFocus}
+      options={options}
+      size={uiVariant === "compact" ? "middle" : "large"}
+      style={style}
+      styles={{
+        root: variantStyles,
+      }}
+      title={title}
+      value={value as OptionValue | undefined}
+      variant={uiVariant === "hero" ? "borderless" : "outlined"}
+    />
   );
 }

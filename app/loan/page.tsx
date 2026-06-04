@@ -1,3 +1,4 @@
+import { Checkbox, Form } from "antd";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
@@ -19,7 +20,7 @@ export default function LoanPage() {
           <div className="text-[13px] text-primary-600">2019 · 85,000 км · ₮95,000,000</div>
         </div>
       </div>
-      <div className="flex flex-col gap-[14px] rounded-xl border border-gray-200 bg-white p-6">
+      <Form component="div" className="flex flex-col gap-[14px] rounded-xl border border-gray-200 bg-white p-6">
         <div className="border-b border-gray-100 pb-3 text-base font-bold text-gray-900">Хувийн мэдээлэл</div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="flex flex-col gap-1">
@@ -60,10 +61,9 @@ export default function LoanPage() {
             <Input placeholder="₮2,500,000" />
           </div>
         </div>
-        <label className="flex items-start gap-2.5 text-sm text-gray-600">
-          <input type="checkbox" defaultChecked className="mt-0.5 h-4 w-4 shrink-0 accent-primary-600" />
+        <Checkbox className="!items-start !text-sm !text-gray-600" defaultChecked>
           Би мэдээлэл дамжуулахыг зөвшөөрч байна. IIC банк болон MonCar платформ мэдээллийг зөвхөн зээлийн хүсэлт боловсруулахад ашиглана.
-        </label>
+        </Checkbox>
         <div className="mt-1 grid grid-cols-2 gap-2 rounded-lg bg-gray-50 p-3 md:grid-cols-4">
           {[
             { label: "ИЛГЭЭГДСЭН", classes: "bg-primary-50 border-[1.5px] border-primary-200 text-primary-600" },
@@ -79,7 +79,7 @@ export default function LoanPage() {
         <Button size="lg" fullWidth className="mt-1">
           💳 Хүсэлт илгээх
         </Button>
-      </div>
+      </Form>
     </div>
   );
 }

@@ -1,4 +1,6 @@
+import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
+import Select from "@/components/ui/Select";
 import FilterSidebar from "@/components/listings/FilterSidebar";
 import ListingCard from "@/components/listings/ListingCard";
 import { GridIcon, ListIcon } from "@/components/icons";
@@ -15,26 +17,19 @@ export default function SearchPage() {
           </div>
           <div className="flex items-center gap-2.5">
             <div className="flex overflow-hidden rounded-lg border-[1.5px] border-gray-300">
-              <button type="button" className="bg-primary-600 px-3 py-[7px] text-white">
+              <Button className="!rounded-none !bg-primary-600 !px-3 !py-[7px] !text-white" type="button">
                 <GridIcon />
-              </button>
-              <button type="button" className="bg-white px-3 py-[7px] text-gray-500">
+              </Button>
+              <Button className="!rounded-none !bg-white !px-3 !py-[7px] !text-gray-500" type="button" variant="ghost">
                 <ListIcon />
-              </button>
+              </Button>
             </div>
-            <select
-              className="cursor-pointer appearance-none rounded-lg border-[1.5px] border-gray-300 bg-white bg-no-repeat px-3 py-2 pr-8 text-[13px] text-gray-700 outline-none"
-              style={{
-                backgroundImage:
-                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%2398A2B3' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
-                backgroundPosition: "right 8px center",
-              }}
-            >
+            <Select className="min-w-[180px]" uiVariant="compact">
               <option>Шинээр нэмэгдсэн</option>
               <option>Үнэ (бага → их)</option>
               <option>Үнэ (их → бага)</option>
               <option>Он (шинэ → хуучин)</option>
-            </select>
+            </Select>
           </div>
         </div>
 
@@ -58,25 +53,26 @@ export default function SearchPage() {
 
         <div className="mt-8 flex items-center justify-center gap-2">
           {["←", "1", "2", "3"].map((item, index) => (
-            <button
+            <Button
               key={item}
-              type="button"
-              className={`flex h-9 w-9 items-center justify-center rounded-lg border-[1.5px] text-sm transition-all ${
+              className={`!flex !h-9 !w-9 !items-center !justify-center !rounded-lg !px-0 !py-0 !text-sm ${
                 index === 1
-                  ? "border-primary-600 bg-primary-600 text-white"
-                  : "border-gray-300 bg-white text-gray-700 hover:border-gray-400 hover:bg-gray-50"
+                  ? "!border-primary-600 !bg-primary-600 !text-white"
+                  : "!border-gray-300 !bg-white !text-gray-700 hover:!border-gray-400 hover:!bg-gray-50"
               }`}
+              type="button"
+              variant={index === 1 ? "primary" : "ghost"}
             >
               {item}
-            </button>
+            </Button>
           ))}
           <span className="text-sm text-gray-400">...</span>
-          <button type="button" className="flex h-9 w-9 items-center justify-center rounded-lg border-[1.5px] border-gray-300 bg-white text-sm text-gray-700 hover:border-gray-400 hover:bg-gray-50">
+          <Button className="!flex !h-9 !w-9 !items-center !justify-center !rounded-lg !px-0 !py-0 !text-sm" type="button" variant="ghost">
             24
-          </button>
-          <button type="button" className="flex h-9 w-9 items-center justify-center rounded-lg border-[1.5px] border-gray-300 bg-white text-sm text-gray-700 hover:border-gray-400 hover:bg-gray-50">
+          </Button>
+          <Button className="!flex !h-9 !w-9 !items-center !justify-center !rounded-lg !px-0 !py-0 !text-sm" type="button" variant="ghost">
             →
-          </button>
+          </Button>
         </div>
       </div>
     </div>

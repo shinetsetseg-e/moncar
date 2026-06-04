@@ -1,3 +1,4 @@
+import { Checkbox } from "antd";
 import Link from "next/link";
 import type { Listing } from "@/types";
 import Badge from "@/components/ui/Badge";
@@ -69,10 +70,7 @@ export default function ListingCard({ listing, href = `/listings/${listing.id}`,
         ) : (
           <div className="flex items-center justify-between border-t border-gray-100 pt-2.5">
             <span className="text-xs text-gray-500">{listing.sellerLabel}</span>
-            <label className="flex cursor-pointer items-center gap-1 text-xs text-gray-500">
-              <input type="checkbox" className="h-4 w-4 accent-primary-600" />
-              Харьцуулах
-            </label>
+            <Checkbox className="!text-xs !text-gray-500">Харьцуулах</Checkbox>
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { Button as AntButton, Form } from "antd";
 import AuthCard from "@/components/auth/AuthCard";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -44,7 +45,7 @@ export default function AuthPage() {
       <div className="w-full max-w-[440px]">
         {state === "login" ? (
           <AuthCard title="МОНКАР" subtitle="Тавтай морилно уу! Нэвтэрч орно уу.">
-            <div className="flex flex-col gap-4">
+            <Form component="div" className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
                 <Input type="tel" placeholder="9900 0000" />
@@ -54,9 +55,9 @@ export default function AuthPage() {
                 <Input type="password" placeholder="••••••••" />
               </div>
               <div className="text-right">
-                <button type="button" className="text-[13px] text-primary-600" onClick={() => setState("forgot")}>
+                <AntButton className="!h-auto !p-0 !text-[13px] !text-primary-600 !shadow-none hover:!text-primary-700" onClick={() => setState("forgot")} type="link">
                   Нууц үг мартсан?
-                </button>
+                </AntButton>
               </div>
               <Button href="/profile" fullWidth>
                 Нэвтрэх
@@ -67,13 +68,13 @@ export default function AuthPage() {
               <Button variant="ghost" fullWidth onClick={() => setState("register")}>
                 Бүртгүүлэх
               </Button>
-            </div>
+            </Form>
           </AuthCard>
         ) : null}
 
         {state === "register" ? (
           <AuthCard title="МОНКАР" subtitle="Шинэ бүртгэл үүсгэх">
-            <div className="flex flex-col gap-4">
+            <Form component="div" className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
                 <Input placeholder="9900 0000" />
@@ -98,13 +99,13 @@ export default function AuthPage() {
               <Button variant="ghost" fullWidth onClick={() => setState("login")}>
                 Нэвтрэх
               </Button>
-            </div>
+            </Form>
           </AuthCard>
         ) : null}
 
         {state === "otp" ? (
           <AuthCard title="МОНКАР" subtitle="📱 +976 9900 0000 дугаарт OTP илгээлээ">
-            <div className="flex flex-col gap-4">
+            <Form component="div" className="flex flex-col gap-4">
               <div className="flex justify-center gap-[10px]">
                 {otp.map((value, index) => (
                   <Input
@@ -140,13 +141,13 @@ export default function AuthPage() {
               <div className="text-center text-[13px] text-gray-500">
                 Код ирээгүй юу? <span className="cursor-pointer text-primary-600">Дахин код авах</span>
               </div>
-            </div>
+            </Form>
           </AuthCard>
         ) : null}
 
         {state === "forgot" ? (
           <AuthCard title="МОНКАР" subtitle="Утасны дугаараа оруулна уу">
-            <div className="flex flex-col gap-4">
+            <Form component="div" className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
                 <Input placeholder="9900 0000" />
@@ -157,7 +158,7 @@ export default function AuthPage() {
               <Button variant="ghost" fullWidth onClick={() => setState("login")}>
                 ← Буцах
               </Button>
-            </div>
+            </Form>
           </AuthCard>
         ) : null}
 

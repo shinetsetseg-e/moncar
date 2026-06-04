@@ -1,3 +1,5 @@
+"use client";
+
 import { notifications } from "@/data/notifications";
 
 function iconForTone(tone: "primary" | "orange" | "green" | "gray" = "gray") {

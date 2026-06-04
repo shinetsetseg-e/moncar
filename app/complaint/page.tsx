@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Form } from "antd";
 import Button from "@/components/ui/Button";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
@@ -15,7 +16,7 @@ export default function ComplaintPage() {
         <span className="text-xs font-bold uppercase tracking-[1.5px] text-primary-600">Гомдол / Мэдэгдэл</span>
       </div>
       <h2 className="mb-6 text-2xl font-bold">Гомдол илгээх</h2>
-      <div className="flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-7">
+      <Form component="div" className="flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-7">
         <div className="flex items-center gap-3 rounded-[10px] border border-gray-200 bg-gray-50 p-3.5">
           <div className="flex h-9 w-11 shrink-0 items-center justify-center rounded-md bg-gray-200">
             <CarPlaceholderIcon className="h-4 w-5 stroke-gray-500 opacity-100" />
@@ -66,7 +67,7 @@ export default function ComplaintPage() {
           </Button>
           <Button onClick={() => setSuccess(true)}>Илгээх</Button>
         </div>
-      </div>
+      </Form>
     </div>
   );
 }

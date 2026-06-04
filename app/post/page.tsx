@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Form } from "antd";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
@@ -37,7 +38,7 @@ export default function PostPage() {
       </div>
 
       {!success ? (
-        <div className="rounded-xl border border-gray-200 bg-white p-7">
+        <Form component="div" className="rounded-xl border border-gray-200 bg-white p-7">
           <div className="mb-1.5 text-lg font-bold text-gray-900">Техникийн мэдээлэл</div>
           <div className="mb-6 text-sm text-gray-500">Машины техникийн үзүүлэлтүүдийг үнэн зөвөөр бөглөнө үү.</div>
           <div className="flex flex-col gap-[14px]">
@@ -124,7 +125,7 @@ export default function PostPage() {
               <Button onClick={() => setSuccess(true)}>Дараах →</Button>
             </div>
           </div>
-        </div>
+        </Form>
       ) : (
         <div className="rounded-xl border border-gray-200 bg-white p-7">
           <div className="py-5 text-center">

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Noto_Sans } from "next/font/google";
+import AntdProvider from "@/components/providers/AntdProvider";
 import Navbar from "@/components/layout/Navbar";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
+import "antd/dist/reset.css";
 import "./globals.css";
 
 const notoSans = Noto_Sans({
@@ -24,9 +27,13 @@ export default function RootLayout({
   return (
     <html lang="mn">
       <body className={`${notoSans.className} ${notoSans.variable} bg-[var(--gray-50)] text-[var(--gray-900)] antialiased`}>
-        <Navbar />
-        <main>{children}</main>
-        <MobileBottomNav />
+        <AntdRegistry>
+          <AntdProvider>
+            <Navbar />
+            <main>{children}</main>
+            <MobileBottomNav />
+          </AntdProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

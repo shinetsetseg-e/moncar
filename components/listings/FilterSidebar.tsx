@@ -1,3 +1,4 @@
+import { Checkbox, Radio } from "antd";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
@@ -18,11 +19,12 @@ export default function FilterSidebar() {
             { label: "Nissan", count: "560", checked: false },
             { label: "Hyundai", count: "720", checked: false },
           ].map((item) => (
-            <label key={item.label} className="flex cursor-pointer items-center gap-2 text-sm">
-              <input type="checkbox" defaultChecked={item.checked} className="accent-primary-600" />
-              {item.label}
+            <div key={item.label} className="flex items-center gap-2 text-sm">
+              <Checkbox defaultChecked={item.checked} className="flex-1 !text-sm !text-gray-700">
+                {item.label}
+              </Checkbox>
               <span className="ml-auto text-xs text-gray-400">{item.count}</span>
-            </label>
+            </div>
           ))}
         </div>
       </div>
@@ -54,15 +56,10 @@ export default function FilterSidebar() {
       <div className="mb-5">
         <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Нөхцөл</div>
         <div className="flex flex-col gap-2">
-          {[
-            { label: "Бүгд", checked: false },
-            { label: "Шинэ", checked: false },
-            { label: "Хэрэглэсэн", checked: true },
-          ].map((item) => (
-            <label key={item.label} className="flex cursor-pointer items-center gap-2 text-sm">
-              <input type="radio" name="cond" defaultChecked={item.checked} className="accent-primary-600" />
-              {item.label}
-            </label>
+          {["Бүгд", "Шинэ", "Хэрэглэсэн"].map((label) => (
+            <Radio key={label} className="!text-sm !text-gray-700" defaultChecked={label === "Хэрэглэсэн"} name="cond">
+              {label}
+            </Radio>
           ))}
         </div>
       </div>

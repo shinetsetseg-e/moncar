@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Checkbox, Form } from "antd";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Select from "@/components/ui/Select";
@@ -15,7 +16,7 @@ export default function PremiumPage() {
         <span className="text-xs font-bold uppercase tracking-[1.5px] text-primary-600">Premium эрх</span>
       </div>
       <h2 className="mb-6 text-2xl font-bold text-gray-900">Зарыг Premium болгох</h2>
-      <div className="rounded-xl border border-gray-200 bg-white p-7">
+      <Form component="div" className="rounded-xl border border-gray-200 bg-white p-7">
         <div className="mb-5 flex flex-col gap-1">
           <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Зар сонгох</label>
           <Select>
@@ -55,10 +56,7 @@ export default function PremiumPage() {
           <Button variant="ghost" fullWidth onClick={() => setSuccess(true)}>
             Төлбөр шалгах
           </Button>
-          <label className="flex cursor-pointer items-center gap-2 text-sm">
-            <input type="checkbox" className="accent-primary-600" />
-            e-Баримт авах
-          </label>
+          <Checkbox className="!text-sm !text-gray-700">e-Баримт авах</Checkbox>
         </div>
         {success ? (
           <div className="mt-3 flex items-center gap-2 rounded-lg border border-green-active bg-green-bg px-4 py-3 text-sm text-green-active">
@@ -66,7 +64,7 @@ export default function PremiumPage() {
             Premium эрх идэвхжлээ! Таны зар хайлтын дэд хэсэгт гарч байна.
           </div>
         ) : null}
-      </div>
+      </Form>
     </div>
   );
 }
