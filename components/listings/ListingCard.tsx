@@ -1,0 +1,81 @@
+import Link from "next/link";
+import type { Listing } from "@/types";
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
+import { CarPlaceholderIcon, ClockIcon, HeartIcon, PinIcon } from "@/components/icons";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  listing: Listing;
+  href?: string;
+  mode?: "featured" | "search" | "saved";
+}
+
+export default function ListingCard({ listing, href = `/listings/${listing.id}`, mode = "featured" }: Props) {
+  return (
+    <div
+      className={cn(
+        "overflow-hidden rounded-xl border border-gray-200 bg-white transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(22,119,255,.12)]",
+        listing.premiumCard && "border-primary-200 shadow-[0_2px_8px_rgba(22,119,255,.1)]",
+      )}
+    >
+      <Link href={href} className="block">
+        <div
+          className={cn(
+            "relative flex h-[180px] items-center justify-center overflow-hidden bg-gradient-to-br from-primary-100 to-primary-50",
+            listing.mutedImage && "bg-gray-100",
+          )}
+        >
+          <div className="flex h-full w-full items-center justify-center bg-gray-100">
+            <CarPlaceholderIcon />
+          </div>
+          {listing.badges.length > 0 ? (
+            <div className="absolute left-[10px] top-[10px] flex flex-wrap gap-1.5">
+              {listing.badges.map((badge) => (
+                <Badge key={`${listing.id}-${badge.label}`} variant={badge.variant}>
+                  {badge.label}
+                </Badge>
+              ))}
+            </div>
+          ) : null}
+          {mode !== "saved" ? (
+            <div className="absolute right-[10px] top-[10px] flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,.1)] hover:bg-red-bg">
+              <HeartIcon className="stroke-gray-400" />
+            </div>
+          ) : null}
+        </div>
+      </Link>
+      <div className="p-4">
+        <div className="mb-1 text-[15px] font-bold text-gray-900">{listing.title}</div>
+        <div className="mb-2.5 text-lg font-bold text-primary-600">{listing.price}</div>
+        <div className="mb-2.5 flex flex-wrap gap-2">
+          {listing.meta.map((item, index) => (
+            <span key={`${listing.id}-${item.label}-${index}`} className="flex items-center gap-[3px] text-xs text-gray-500">
+              {item.icon === "clock" ? <ClockIcon className="stroke-gray-400" /> : null}
+              {item.icon === "pin" ? <PinIcon className="stroke-gray-400" /> : null}
+              {item.label}
+            </span>
+          ))}
+        </div>
+        {mode === "saved" ? (
+          <div className="flex items-center justify-between border-t border-gray-100 pt-2.5">
+            <Button href={href} size="sm">
+              Дэлгэрэнгүй
+            </Button>
+            <Button size="sm" variant="danger">
+              Устгах
+            </Button>
+          </div>
+        ) : (
+          <div className="flex items-center justify-between border-t border-gray-100 pt-2.5">
+            <span className="text-xs text-gray-500">{listing.sellerLabel}</span>
+            <label className="flex cursor-pointer items-center gap-1 text-xs text-gray-500">
+              <input type="checkbox" className="h-4 w-4 accent-primary-600" />
+              Харьцуулах
+            </label>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

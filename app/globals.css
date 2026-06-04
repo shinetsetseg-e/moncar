@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-50: #edf8ff;
+  --primary-100: #d7edff;
+  --primary-200: #b9e1ff;
+  --primary-300: #88d0ff;
+  --primary-400: #50b5ff;
+  --primary-500: #2893ff;
+  --primary-600: #1677ff;
+  --primary-700: #0a5ceb;
+  --primary-800: #0f4abe;
+  --primary-900: #134295;
+  --gray-50: #f9fafb;
+  --gray-100: #f2f4f7;
+  --gray-200: #eaecf0;
+  --gray-300: #d0d5dd;
+  --gray-400: #98a2b3;
+  --gray-500: #667085;
+  --gray-600: #475467;
+  --gray-700: #344054;
+  --gray-800: #1d2939;
+  --gray-900: #101828;
+  --white: #ffffff;
+  --green-bg: #f0fdf4;
+  --green-active: #16a34a;
+  --red-bg: #fef2f2;
+  --red-danger: #dc2626;
+  --orange-bg: #fff6db;
+  --orange-warning: #f9b634;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
