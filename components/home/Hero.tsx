@@ -38,7 +38,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center opacity-70 blur-sm"
         style={{
           backgroundImage:
-            "url(https://images.unsplash.com/photo-1659946431273-5cfabfa85197?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+            "url(https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
         }}
       />
 
@@ -46,7 +46,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
         <h1 className="max-w-4xl text-4xl font-bold tracking-[-0.04em] text-gray-900 md:text-7xl">
-          Монголын <span className="text-primary-600"> автомашины нэгдсэн систем</span>
+          Moncar <span className="text-primary-600"> авто систем</span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-base leading-7 text-gray-600 md:text-lg">
@@ -55,7 +55,7 @@ export default function Hero() {
 
         <div className="mt-9 w-full rounded-3xl border border-white/60 bg-white/50 p-3 shadow-lg">
           <div className="grid gap-3 lg:grid-cols-[1fr_1fr_1.4fr_auto]">
-            <select className="h-14 rounded-2xl border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 outline-none focus:border-primary-500">
+            <select className="h-12 rounded-2xl bg-transparent px-4 text-sm font-semibold text-gray-800 outline-none focus:border-primary-500">
               <option>Марк</option>
               <option>Toyota</option>
               <option>Lexus</option>
@@ -63,7 +63,7 @@ export default function Hero() {
               <option>BMW</option>
             </select>
 
-            <select className="h-14 rounded-2xl border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 outline-none focus:border-primary-500">
+            <select className="h-12 rounded-2xl bg-transparent px-4 text-sm font-semibold text-gray-800 outline-none focus:border-primary-500">
               <option>Загвар</option>
               <option>Prius</option>
               <option>RX</option>
@@ -71,7 +71,7 @@ export default function Hero() {
               <option>Land Cruiser</option>
             </select>
 
-            <div className="flex h-14 items-center gap-4 rounded-2xl border border-gray-200 bg-white px-4">
+            <div className="flex h-12 items-center gap-4 rounded-2xl bg-transparent px-4">
               <div className="min-w-[130px] text-left">
                 <p className="text-xs font-semibold text-gray-500">Үнэ</p>
                 <p className="text-sm font-semibold text-gray-900">
@@ -90,7 +90,7 @@ export default function Hero() {
               />
             </div>
 
-            <button className="h-14 rounded-2xl bg-primary-600 px-8 text-sm font-semibold text-white transition hover:bg-primary-700">
+            <button className="h-12 rounded-2xl bg-primary-600 px-8 text-sm font-semibold text-white transition hover:bg-primary-700">
               Хайх
             </button>
           </div>
