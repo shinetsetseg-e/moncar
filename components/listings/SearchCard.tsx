@@ -1,12 +1,12 @@
 import { SearchIcon } from "@/components/icons";
-import Button from "@/shared/components/form/Button";
-import Input from "@/shared/components/form/Input";
-import Select from "@/shared/components/form/Select";
+import Button from "@/shared/form/Button";
+import Input from "@/shared/form/Input";
+import Select from "@/shared/form/Select";
 import { Search } from "lucide-react";
 
 export default function SearchCard() {
   return (
-    <div className="rounded-2xl border border-gray-200 p-7 shadow-[0_8px_32px_rgba(22,119,255,.08)]">
+    <div className="rounded-2xl border border-gray-200 p-7 shadow-[0_8px_32px_rgb(var(--primary-600-rgb)/0.08)]">
       <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-gray-700">
         <Search className="h-4 w-4" strokeWidth={2} />
         Машин хайх

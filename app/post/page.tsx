@@ -1,9 +1,9 @@
 "use client";
 
+import { Button, FormField, Input, PageHeader, Select, SuccessState } from "@/shared";
 import { Form } from "antd";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { Button, FormField, Input, PageHeader, Select, SuccessState } from "@/shared/components";
 
 export default function PostPage() {
   const [success, setSuccess] = useState(false);

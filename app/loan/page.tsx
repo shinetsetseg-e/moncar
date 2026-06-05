@@ -1,8 +1,8 @@
-import { Form } from "antd";
-import { CreditCard } from "lucide-react";
 import { CarPlaceholderIcon } from "@/components/icons";
 import { getListingById } from "@/data/listings";
-import { Button, Checkbox, FormField, PageHeader, Select, StatusChip, Input } from "@/shared/components";
+import { Button, Checkbox, FormField, Input, PageHeader, Select, StatusChip } from "@/shared";
+import { Form } from "antd";
+import { CreditCard } from "lucide-react";
 
 interface LoanPageProps {
   searchParams?: Promise<{

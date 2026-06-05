@@ -1,4 +1,4 @@
-import Button from "@/shared/components/form/Button";
+import Button from "@/shared/form/Button";
 import type { ReactNode } from "react";
 import Modal from "./Modal";
 

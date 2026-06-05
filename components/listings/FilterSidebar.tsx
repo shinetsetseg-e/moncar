@@ -1,4 +1,4 @@
-import { Button, Checkbox, FormField, Input, Radio, Select } from "@/shared/components";
+import { Button, Checkbox, FormField, Input, Radio, Select } from "@/shared";
 
 export default function FilterSidebar() {
   return (

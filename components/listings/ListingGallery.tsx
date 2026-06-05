@@ -1,5 +1,5 @@
 import { DetailedCarPlaceholderIcon } from "@/components/icons";
-import Badge from "@/shared/components/status/Badge";
+import Badge from "@/shared/status/Badge";
 
 export default function ListingGallery() {
   return (

@@ -1,9 +1,9 @@
 "use client";
 
+import { CarPlaceholderIcon } from "@/components/icons";
+import { Alert, Button, FormField, PageHeader, Select, Textarea, UploadDropzone } from "@/shared";
 import { Form } from "antd";
 import { useState } from "react";
-import { CarPlaceholderIcon } from "@/components/icons";
-import { Alert, Button, FormField, PageHeader, Select, Textarea, UploadDropzone } from "@/shared/components";
 
 export default function ComplaintPage() {
   const [success, setSuccess] = useState(false);

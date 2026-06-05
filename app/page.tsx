@@ -1,10 +1,10 @@
-import { ArrowRight } from "lucide-react";
 import BrandGrid from "@/components/home/BrandGrid";
 import Hero from "@/components/home/Hero";
 import PromoBanners from "@/components/home/PromoBanners";
 import Footer from "@/components/layout/Footer";
 import { featuredListings } from "@/data/listings";
-import { Button, ListingCard, SectionHeader } from "@/shared/components";
+import { Button, ListingCard, SectionHeader } from "@/shared";
+import { ArrowRight } from "lucide-react";
 
 export default function HomePage() {
   return (

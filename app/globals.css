@@ -13,6 +13,19 @@
   --primary-700: #0a5ceb;
   --primary-800: #0f4abe;
   --primary-900: #134295;
+  --primary-50-rgb: 237 248 255;
+  --primary-100-rgb: 215 237 255;
+  --primary-200-rgb: 185 225 255;
+  --primary-300-rgb: 136 208 255;
+  --primary-400-rgb: 80 181 255;
+  --primary-500-rgb: 40 147 255;
+  --primary-600-rgb: 22 119 255;
+  --primary-700-rgb: 10 92 235;
+  --primary-800-rgb: 15 74 190;
+  --primary-900-rgb: 19 66 149;
+  --ring-primary: var(--primary-200);
+  --text-primary: var(--primary-600);
+  --bg-primary-soft: var(--primary-50);
   --gray-50: #f9fafb;
   --gray-100: #f2f4f7;
   --gray-200: #eaecf0;
@@ -63,6 +76,22 @@ textarea {
 
 .ant-layout {
   background: var(--gray-50);
+}
+
+.ant-btn-color-primary.ant-btn-variant-solid {
+  background: var(--primary-600) !important;
+}
+
+.ant-btn-color-primary.ant-btn-variant-solid:hover {
+  background: var(--primary-700) !important;
+}
+
+.ant-btn-color-primary.ant-btn-variant-solid:active {
+  background: var(--primary-800) !important;
+}
+
+.ant-select-dropdown .ant-select-item-option-selected {
+  background: var(--bg-primary-soft) !important;
 }
 
 .ant-list .ant-list-items {

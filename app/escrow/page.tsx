@@ -1,4 +1,4 @@
-import Button from "@/shared/components/form/Button";
+import Button from "@/shared/form/Button";
 import { CircleCheck, FileText, ShieldCheck } from "lucide-react";
 
 export default function EscrowPage() {

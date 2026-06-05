@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import PromoBanners from "@/components/home/PromoBanners";
-import { PageHeader } from "@/shared/components";
+import { PageHeader } from "@/shared";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Үйлчилгээ | Монкар",

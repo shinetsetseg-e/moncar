@@ -1,3 +1,3 @@
-export { default } from "@/shared/components/listings/ListingCard";
-export type { ListingCardProps } from "@/shared/components/listings/ListingCard";
+export { default } from "@/shared/listings/ListingCard";
+export type { ListingCardProps } from "@/shared/listings/ListingCard";
 

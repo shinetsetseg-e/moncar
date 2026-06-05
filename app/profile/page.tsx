@@ -1,7 +1,7 @@
-import { Form } from "antd";
 import { CarPlaceholderIcon } from "@/components/icons";
 import ProfileSidebar from "@/components/profile/ProfileSidebar";
-import { Badge, Button, FormField, Input, InfoCard, PageHeader } from "@/shared/components";
+import { Badge, Button, FormField, InfoCard, Input, PageHeader } from "@/shared";
+import { Form } from "antd";
 
 export default function ProfilePage() {
   return (

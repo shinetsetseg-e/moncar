@@ -2,11 +2,11 @@
 
 import ListingGallery from "@/components/listings/ListingGallery";
 import SpecsGrid from "@/components/listings/SpecsGrid";
-import Modal from "@/shared/components/dialogs/Modal";
-import Button from "@/shared/components/form/Button";
-import Select from "@/shared/components/form/Select";
-import Textarea from "@/shared/components/form/Textarea";
-import Badge from "@/shared/components/status/Badge";
+import Badge from "@/shared/status/Badge";
+import Modal from "@/shared/dialogs/Modal";
+import Button from "@/shared/form/Button";
+import Select from "@/shared/form/Select";
+import Textarea from "@/shared/form/Textarea";
 import type { Listing } from "@/types";
 import {
   ArrowUpRight,

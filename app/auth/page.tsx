@@ -1,12 +1,12 @@
 "use client";
 
+import AuthCard from "@/components/auth/AuthCard";
+import { useAuth } from "@/components/providers/AuthProvider";
+import { Button, FormField, Input } from "@/shared";
 import { Button as AntButton, Form } from "antd";
 import { ChevronLeft, Lock, Smartphone } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import AuthCard from "@/components/auth/AuthCard";
-import { useAuth } from "@/components/providers/AuthProvider";
-import { Button, FormField, Input } from "@/shared/components";
 
 type AuthState = "login" | "register" | "otp" | "forgot" | "success";
 

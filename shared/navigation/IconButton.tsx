@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Button from "@/shared/components/form/Button";
+import Button from "@/shared/form/Button";
 import type { MouseEventHandler, ReactNode } from "react";
 
 export interface IconButtonProps {

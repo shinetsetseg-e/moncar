@@ -1,5 +1,6 @@
 "use client";
 
+import ThemePicker from "@/components/design/ThemePicker";
 import { featuredListings, savedListings } from "@/data/listings";
 import {
   Alert,
@@ -31,7 +32,7 @@ import {
   SummaryRow,
   Textarea,
   UploadDropzone,
-} from "@/shared/components";
+} from "@/shared";
 import { Bell, ChevronRight, Heart, Plus, User } from "lucide-react";
 import { useState } from "react";
 
@@ -51,6 +52,8 @@ export default function DesignComponentsPage() {
       />
 
       <div className="space-y-10">
+        <ThemePicker />
+
         <section>
           <SectionHeader label="1" title="Формын компонентууд" subtitle="Формын нийтлэг control-ууд" />
           <div className="grid gap-5 lg:grid-cols-2">

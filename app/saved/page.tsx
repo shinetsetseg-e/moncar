@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import { savedListings } from "@/data/listings";
-import { Button, ListingCard, PageHeader } from "@/shared/components";
+import { Button, ListingCard, PageHeader } from "@/shared";
+import { useMemo, useState } from "react";
 
 export default function SavedPage() {
   const [selectedIds, setSelectedIds] = useState<string[]>(savedListings.slice(0, 2).map((listing) => listing.id));

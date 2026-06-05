@@ -6,16 +6,16 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          50: "#edf8ff",
-          100: "#d7edff",
-          200: "#B9E1FF",
-          300: "#88D0FF",
-          400: "#50B5FF",
-          500: "#2893FF",
-          600: "#1677FF",
-          700: "#0A5CEB",
-          800: "#0F4ABE",
-          900: "#134295",
+          50: "rgb(var(--primary-50-rgb) / <alpha-value>)",
+          100: "rgb(var(--primary-100-rgb) / <alpha-value>)",
+          200: "rgb(var(--primary-200-rgb) / <alpha-value>)",
+          300: "rgb(var(--primary-300-rgb) / <alpha-value>)",
+          400: "rgb(var(--primary-400-rgb) / <alpha-value>)",
+          500: "rgb(var(--primary-500-rgb) / <alpha-value>)",
+          600: "rgb(var(--primary-600-rgb) / <alpha-value>)",
+          700: "rgb(var(--primary-700-rgb) / <alpha-value>)",
+          800: "rgb(var(--primary-800-rgb) / <alpha-value>)",
+          900: "rgb(var(--primary-900-rgb) / <alpha-value>)",
         },
         gray: {
           50: "#F9FAFB",

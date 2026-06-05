@@ -1,9 +1,9 @@
 "use client";
 
+import { Alert, Badge, Button, Checkbox, FormField, PageHeader, Select } from "@/shared";
 import { Form } from "antd";
 import { Star } from "lucide-react";
 import { useState } from "react";
-import { Alert, Badge, Button, Checkbox, FormField, PageHeader, Select } from "@/shared/components";
 
 export default function PremiumPage() {
   const [success, setSuccess] = useState(false);

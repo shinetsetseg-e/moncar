@@ -1,6 +1,6 @@
 import { CarPlaceholderIcon } from "@/components/icons";
 import { savedListings } from "@/data/listings";
-import { Badge, Button, PageHeader } from "@/shared/components";
+import { Badge, Button, PageHeader } from "@/shared";
 
 interface ComparePageProps {
   searchParams?: Promise<{

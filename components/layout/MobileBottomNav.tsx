@@ -1,10 +1,10 @@
 "use client";
 
-import { House, Plus } from "lucide-react";
 import { HeartIcon, SearchIcon, UserIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { isRouteActive } from "@/lib/utils";
-import { MobileNavItem } from "@/shared/components";
+import { MobileNavItem } from "@/shared";
+import { House, Plus } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function MobileBottomNav() {
@@ -30,7 +30,7 @@ export default function MobileBottomNav() {
             ) : item.href === "/marketplace" ? (
               <SearchIcon className="h-[22px] w-[22px]" />
             ) : item.href === "/post" ? (
-              <div className="-mt-4 flex h-11 w-11 items-center justify-center rounded-full bg-primary-600 shadow-[0_4px_12px_rgba(22,119,255,.3)]">
+              <div className="-mt-4 flex h-11 w-11 items-center justify-center rounded-full bg-primary-600 shadow-[0_4px_12px_rgb(var(--primary-600-rgb)/0.3)]">
                 <Plus className="h-[22px] w-[22px] text-white" strokeWidth={2.5} />
               </div>
             ) : item.href === "/saved" ? (

@@ -1,4 +1,4 @@
-import Button from "@/shared/components/form/Button";
+import Button from "@/shared/form/Button";
 import { X } from "lucide-react";
 import type { ReactNode } from "react";
 

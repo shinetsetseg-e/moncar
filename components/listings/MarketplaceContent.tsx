@@ -1,6 +1,6 @@
 import { GridIcon, ListIcon } from "@/components/icons";
 import { searchListings } from "@/data/listings";
-import { Badge, Button, ListingCard, Select } from "@/shared/components";
+import { Badge, Button, ListingCard, Select } from "@/shared";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import FilterSidebar from "./FilterSidebar";
 

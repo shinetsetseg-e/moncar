@@ -1,6 +1,6 @@
 import { CarPlaceholderIcon, HeartIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import Badge from "@/shared/components/status/Badge";
+import Badge from "@/shared/status/Badge";
 import type { Listing } from "@/types";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -34,8 +34,8 @@ export default function ListingCard({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-xl border border-gray-200 bg-white transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(22,119,255,.12)]",
-        listing.premiumCard && "border-primary-200 shadow-[0_2px_8px_rgba(22,119,255,.1)]",
+        "overflow-hidden rounded-xl border border-gray-200 bg-white transition-[box-shadow,transform] hover:-translate-y-0.5 hover:border-primary-300 hover:shadow-[0_8px_24px_rgb(var(--primary-600-rgb)/0.12)]",
+        listing.premiumCard && "border-primary-200 shadow-[0_2px_8px_rgb(var(--primary-600-rgb)/0.1)]",
         selected && "border-primary-300 ring-2 ring-primary-100",
       )}
     >
@@ -59,8 +59,8 @@ export default function ListingCard({
             </div>
           ) : null}
           {resolvedMode !== "saved" ? (
-            <div className="absolute right-[10px] top-[10px] flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,.1)] hover:bg-red-bg">
-              <HeartIcon className="stroke-gray-400" />
+            <div className="group absolute right-[10px] top-[10px] flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,.1)] hover:bg-primary-50">
+              <HeartIcon className="stroke-gray-400 transition-colors group-hover:stroke-primary-600" />
             </div>
           ) : null}
         </div>

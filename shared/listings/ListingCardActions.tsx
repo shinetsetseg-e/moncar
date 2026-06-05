@@ -1,4 +1,4 @@
-import Button from "@/shared/components/form/Button";
+import Button from "@/shared/form/Button";
 import { Eye, Trash2 } from "lucide-react";
 import SellerChip from "./SellerChip";
 
