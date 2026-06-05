@@ -40,7 +40,7 @@ export default function PromoBanners() {
             <Button href="/loan" variant="white">
               Зээлийн хүсэлт илгээх
             </Button>
-            <Button href="/loan" variant="outline-white">
+            <Button href="/loan" >
               Дэлгэрэнгүй
             </Button>
           </div>
