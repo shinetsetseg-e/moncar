@@ -28,7 +28,7 @@ export const notifications: NotificationItem[] = [
   {
     id: "welcome",
     title: "Тавтай морилно уу!",
-    description: "MonCar платформд бүртгэгдсэн таньд баярлалаа.",
+    description: "Moncar платформд бүртгэгдсэн танд баярлалаа.",
     time: "3 өдөр",
     tone: "gray",
   },

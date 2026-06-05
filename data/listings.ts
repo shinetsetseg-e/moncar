@@ -149,6 +149,10 @@ export const savedListings: Listing[] = [
   featuredListings[2],
 ];
 
+export const allListings = [...featuredListings, ...searchListings].filter(
+  (listing, index, listings) => listings.findIndex((item) => item.id === listing.id) === index,
+);
+
 export function getListingById(id: string) {
-  return [...featuredListings, ...searchListings].find((listing) => listing.id === id);
+  return allListings.find((listing) => listing.id === id);
 }

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { mobileNavLinks } from "@/data/navigation";
 import { HeartIcon, SearchIcon, UserIcon } from "@/components/icons";
+import { useAuth } from "@/components/providers/AuthProvider";
 import { isRouteActive } from "@/lib/utils";
 
 function HomeIcon() {
@@ -26,6 +26,17 @@ function PlusIcon() {
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
+  const { isAuthenticated, isReady } = useAuth();
+
+  const mobileNavLinks = [
+    { href: "/", label: "Нүүр" },
+    { href: "/marketplace", label: "Market" },
+    { href: "/post", label: "Зар" },
+    { href: "/saved", label: "Saved" },
+    isReady && isAuthenticated
+      ? { href: "/profile", label: "Профайл" }
+      : { href: "/auth", label: "Нэвтрэх" },
+  ];
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[90] block border-t border-gray-200 bg-white px-0 py-2 pb-3 shadow-[0_-2px_8px_rgba(16,24,40,.06)] md:hidden">
@@ -35,7 +46,7 @@ export default function MobileBottomNav() {
           const icon =
             item.href === "/"
               ? <HomeIcon />
-              : item.href === "/search"
+              : item.href === "/marketplace"
                 ? <SearchIcon className="h-[22px] w-[22px]" />
                 : item.href === "/post"
                   ? (

@@ -6,7 +6,7 @@ export const profileMenuItems: ProfileMenuItem[] = [
   { label: "Ebarimt тохиргоо", icon: "grid" },
   { label: "Миний зар", href: "/post", icon: "plus" },
   { label: "Миний зээлийн хүсэлт", href: "/loan", icon: "card" },
-  { label: "Хадгалсан зар", href: "/saved", icon: "heart" },
+  { label: "Хадгалсан машинууд", href: "/saved", icon: "heart" },
   { label: "Нууц үг солих", icon: "lock" },
   { label: "Гарах", danger: true, icon: "logout" },
 ];

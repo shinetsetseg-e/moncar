@@ -7,7 +7,9 @@ export default function PromoBanners() {
         <div>
           <div className="mb-2 text-xs font-bold uppercase tracking-[1.5px] text-primary-600">🔒 Аюулгүй төлбөр</div>
           <div className="mb-2 text-[22px] font-bold text-primary-800">Escrow хамгаалалттай худалдан авалт</div>
-          <div className="mb-5 text-[15px] text-primary-700">Худалдан авагч болон борлуулагчийн төлбөрийн эрсдэлийг бууруулна.</div>
+          <div className="mb-5 text-[15px] text-primary-700">
+            Худалдан авагч болон борлуулагчийн төлбөрийн эрсдэлийг бууруулж, илүү найдвартай арилжаа хийхэд тусална.
+          </div>
           <div className="flex flex-wrap gap-3">
             <Button href="/escrow">Дэлгэрэнгүй мэдэх</Button>
             <Button href="/escrow" variant="ghost">
@@ -21,11 +23,14 @@ export default function PromoBanners() {
           <path d="M48 60 L56 68 L72 52" stroke="var(--primary-700)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
+
       <div className="grid flex-1 grid-cols-1 items-center gap-8 rounded-2xl bg-primary-600 px-8 py-10 text-white md:grid-cols-[1fr_auto] md:px-12">
         <div>
-          <div className="mb-2 text-xs font-bold uppercase tracking-[1.5px] opacity-70">IIC ЗЭЭЛ</div>
+          <div className="mb-2 text-xs font-bold uppercase tracking-[1.5px] opacity-70">IIC зээл</div>
           <div className="mb-2 text-[22px] font-bold">Машинаа зээлээр авах боломжтой</div>
-          <div className="mb-5 text-[15px] opacity-85">IIC банктай хамтран зээлийн хүсэлтийг шууд платформоос илгээх боломжтой.</div>
+          <div className="mb-5 text-[15px] opacity-85">
+            IIC банктай хамтарсан зээлийн хүсэлтийг Moncar-оос шууд илгээж, сонгосон машиндаа санхүүжилт авах боломжтой.
+          </div>
           <div className="flex flex-wrap gap-3">
             <Button href="/loan" variant="white">
               Зээлийн хүсэлт илгээх

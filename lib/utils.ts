@@ -7,8 +7,8 @@ export function isRouteActive(pathname: string, href: string) {
     return pathname === "/";
   }
 
-  if (href === "/search") {
-    return pathname === "/search" || pathname.startsWith("/listings/");
+  if (href === "/marketplace") {
+    return pathname === "/marketplace" || pathname === "/search" || pathname.startsWith("/listings/");
   }
 
   return pathname === href;

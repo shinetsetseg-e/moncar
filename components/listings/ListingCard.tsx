@@ -10,14 +10,25 @@ interface Props {
   listing: Listing;
   href?: string;
   mode?: "featured" | "search" | "saved";
+  selectable?: boolean;
+  selected?: boolean;
+  onSelectedChange?: (checked: boolean) => void;
 }
 
-export default function ListingCard({ listing, href = `/listings/${listing.id}`, mode = "featured" }: Props) {
+export default function ListingCard({
+  listing,
+  href = `/listings/${listing.id}`,
+  mode = "featured",
+  selectable = false,
+  selected = false,
+  onSelectedChange,
+}: Props) {
   return (
     <div
       className={cn(
         "overflow-hidden rounded-xl border border-gray-200 bg-white transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(22,119,255,.12)]",
         listing.premiumCard && "border-primary-200 shadow-[0_2px_8px_rgba(22,119,255,.1)]",
+        selected && "border-primary-300 ring-2 ring-primary-100",
       )}
     >
       <Link href={href} className="block">
@@ -59,13 +70,24 @@ export default function ListingCard({ listing, href = `/listings/${listing.id}`,
           ))}
         </div>
         {mode === "saved" ? (
-          <div className="flex items-center justify-between border-t border-gray-100 pt-2.5">
-            <Button href={href} size="sm">
-              Дэлгэрэнгүй
-            </Button>
-            <Button size="sm" variant="danger">
-              Устгах
-            </Button>
+          <div className="border-t border-gray-100 pt-2.5">
+            {selectable ? (
+              <Checkbox
+                checked={selected}
+                className="mb-3 !text-xs !text-gray-500"
+                onChange={(event) => onSelectedChange?.(event.target.checked)}
+              >
+                Харьцуулахад сонгох
+              </Checkbox>
+            ) : null}
+            <div className="flex items-center justify-between">
+              <Button href={href} size="sm">
+                Дэлгэрэнгүй
+              </Button>
+              <Button size="sm" variant="danger">
+                Устгах
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="flex items-center justify-between border-t border-gray-100 pt-2.5">

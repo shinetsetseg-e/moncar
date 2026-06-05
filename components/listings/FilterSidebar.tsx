@@ -10,6 +10,7 @@ export default function FilterSidebar() {
         <span>Шүүлтүүр</span>
         <span className="cursor-pointer text-xs font-medium text-primary-600">Цэвэрлэх</span>
       </div>
+
       <div className="mb-5 border-b border-gray-100 pb-5">
         <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Үйлдвэр</div>
         <div className="flex flex-col gap-2">
@@ -28,14 +29,16 @@ export default function FilterSidebar() {
           ))}
         </div>
       </div>
+
       <div className="mb-5 border-b border-gray-100 pb-5">
-        <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Үнэний хязгаар</div>
+        <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Үнийн хязгаар</div>
         <div className="flex items-center gap-2 text-xs text-gray-500">
           <Input className="px-[10px] py-[7px] text-[13px]" placeholder="₮0" />
           <span>—</span>
           <Input className="px-[10px] py-[7px] text-[13px]" placeholder="₮200M" />
         </div>
       </div>
+
       <div className="mb-5 border-b border-gray-100 pb-5">
         <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Он</div>
         <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -44,6 +47,7 @@ export default function FilterSidebar() {
           <Input className="px-[10px] py-[7px] text-[13px]" placeholder="2024" />
         </div>
       </div>
+
       <div className="mb-5 border-b border-gray-100 pb-5">
         <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Байршил</div>
         <Select>
@@ -53,6 +57,7 @@ export default function FilterSidebar() {
           <option>Эрдэнэт</option>
         </Select>
       </div>
+
       <div className="mb-5">
         <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Нөхцөл</div>
         <div className="flex flex-col gap-2">
@@ -63,6 +68,7 @@ export default function FilterSidebar() {
           ))}
         </div>
       </div>
+
       <Button fullWidth>Шүүлтүүр хэрэглэх</Button>
     </aside>
   );

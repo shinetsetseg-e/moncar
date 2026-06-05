@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Listing } from "@/types";
+import ListingGallery from "@/components/listings/ListingGallery";
+import SpecsGrid from "@/components/listings/SpecsGrid";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
-import ListingGallery from "@/components/listings/ListingGallery";
-import SpecsGrid from "@/components/listings/SpecsGrid";
 
 interface Props {
   listing: Listing;
@@ -26,8 +26,8 @@ export default function ListingDetailPage({ listing }: Props) {
             Нүүр
           </Link>
           <span className="text-gray-300">›</span>
-          <Link href="/search" className="cursor-pointer">
-            Хайлт
+          <Link href="/marketplace" className="cursor-pointer">
+            Marketplace
           </Link>
           <span className="text-gray-300">›</span>
           <span className="text-gray-700">{listing.title}</span>
@@ -92,7 +92,7 @@ export default function ListingDetailPage({ listing }: Props) {
                 <Button size="lg" fullWidth>
                   📞 Утас харах / Залгах
                 </Button>
-                <Button href="/loan" variant="secondary" fullWidth>
+                <Button href={`/loan?listing=${listing.id}`} variant="secondary" fullWidth>
                   💳 Зээлийн хүсэлт илгээх
                 </Button>
                 <div className="grid grid-cols-2 gap-2">

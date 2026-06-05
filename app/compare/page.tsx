@@ -1,15 +1,39 @@
-import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
-import { compareRows } from "@/data/compare";
-import { savedListings } from "@/data/listings";
+import Button from "@/components/ui/Button";
 import { CarPlaceholderIcon } from "@/components/icons";
+import { savedListings } from "@/data/listings";
 
-export default function ComparePage() {
-  const compareListings = savedListings.slice(0, 3);
+interface ComparePageProps {
+  searchParams?: Promise<{
+    ids?: string;
+  }>;
+}
+
+export default async function ComparePage({ searchParams }: ComparePageProps) {
+  const resolvedSearchParams = await searchParams;
+  const requestedIds = resolvedSearchParams?.ids?.split(",").filter(Boolean) ?? [];
+  const compareListings = (requestedIds.length > 0
+    ? savedListings.filter((listing) => requestedIds.includes(listing.id))
+    : savedListings.slice(0, 3)
+  ).slice(0, 3);
+
+  const compareRows = [
+    { label: "Он", values: compareListings.map((listing) => listing.year) },
+    { label: "Явсан км", values: compareListings.map((listing) => listing.mileage) },
+    { label: "Хөдөлгүүр", values: compareListings.map((listing) => listing.engine ?? "—") },
+    { label: "Дамжуулга", values: compareListings.map((listing) => listing.transmission ?? "—") },
+    { label: "Нөхцөл", values: compareListings.map((listing) => listing.condition ?? "—") },
+    { label: "Байршил", values: compareListings.map((listing) => listing.location) },
+    { label: "Зээл", values: compareListings.map((listing) => (listing.loanEligible ? "Тийм" : "Үгүй")) },
+  ];
 
   return (
     <div className="mx-auto max-w-[1280px] overflow-x-auto px-4 py-8 md:px-8">
-      <h2 className="mb-6 text-2xl font-bold">Машин харьцуулах</h2>
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold">Машин харьцуулах</h1>
+        <p className="mt-1 text-sm text-gray-500">Хадгалсан машинаас сонгосон заруудыг зэрэгцүүлэн харьцуулна.</p>
+      </div>
+
       <div className="overflow-x-auto">
         <table className="w-full min-w-[900px] overflow-hidden rounded-xl border border-gray-200 bg-white">
           <thead>
@@ -34,7 +58,7 @@ export default function ComparePage() {
                 <td className="sticky left-0 border-b border-gray-100 bg-gray-50 px-4 py-3.5 text-sm font-bold text-gray-700">{row.label}</td>
                 {row.values.map((value, index) => (
                   <td key={`${row.label}-${index}`} className="border-b border-gray-100 px-4 py-3.5 text-sm">
-                    {row.badgeValues ? <Badge variant={row.badgeValues[index]}>{value}</Badge> : value}
+                    {row.label === "Зээл" ? <Badge variant={value === "Тийм" ? "loan" : "normal"}>{value}</Badge> : value}
                   </td>
                 ))}
               </tr>
@@ -48,12 +72,12 @@ export default function ComparePage() {
                       Дэлгэрэнгүй
                     </Button>
                     {listing.loanEligible ? (
-                      <Button href="/loan" variant="secondary" size="sm">
-                        Зээл
+                      <Button href={`/loan?listing=${listing.id}`} variant="secondary" size="sm">
+                        Зээлийн хүсэлт
                       </Button>
                     ) : (
                       <Button variant="ghost" size="sm" disabled>
-                        Зээл
+                        Зээл боломжгүй
                       </Button>
                     )}
                   </div>

@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
-import { profileMenuItems } from "@/data/profile";
+import { useRouter } from "next/navigation";
 import { HeartIcon, UserIcon } from "@/components/icons";
+import { useAuth } from "@/components/providers/AuthProvider";
+import { profileMenuItems } from "@/data/profile";
 
 function SidebarIcon({ icon }: { icon: (typeof profileMenuItems)[number]["icon"] }) {
   if (icon === "user") return <UserIcon className="h-4 w-4" />;
@@ -55,6 +59,9 @@ function SidebarIcon({ icon }: { icon: (typeof profileMenuItems)[number]["icon"]
 }
 
 export default function ProfileSidebar() {
+  const router = useRouter();
+  const { logout } = useAuth();
+
   return (
     <aside className="overflow-hidden rounded-xl border border-gray-200 bg-white md:sticky md:top-20 md:h-fit">
       <div className="border-b border-gray-100 px-5 pb-5 pt-7 text-center">
@@ -78,6 +85,22 @@ export default function ProfileSidebar() {
               {item.label}
             </span>
           );
+
+          if (item.danger) {
+            return (
+              <button
+                key={item.label}
+                type="button"
+                className="w-full text-left"
+                onClick={() => {
+                  logout();
+                  router.push("/");
+                }}
+              >
+                {content}
+              </button>
+            );
+          }
 
           return item.href ? (
             <Link key={item.label} href={item.href}>

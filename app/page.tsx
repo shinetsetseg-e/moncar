@@ -1,10 +1,10 @@
-import Footer from "@/components/layout/Footer";
-import Hero from "@/components/home/Hero";
 import BrandGrid from "@/components/home/BrandGrid";
+import Hero from "@/components/home/Hero";
 import PromoBanners from "@/components/home/PromoBanners";
+import Footer from "@/components/layout/Footer";
 import ListingCard from "@/components/listings/ListingCard";
-import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
+import SectionHeader from "@/components/ui/SectionHeader";
 import { featuredListings } from "@/data/listings";
 
 export default function HomePage() {
@@ -18,7 +18,7 @@ export default function HomePage() {
             label="Premium зарууд"
             title="Онцлох машинууд"
             action={
-              <Button href="/search" variant="ghost">
+              <Button href="/marketplace" variant="ghost">
                 Бүгдийг үзэх →
               </Button>
             }

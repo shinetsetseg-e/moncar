@@ -1,9 +1,9 @@
 import { Form } from "antd";
+import { CarPlaceholderIcon } from "@/components/icons";
+import ProfileSidebar from "@/components/profile/ProfileSidebar";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import ProfileSidebar from "@/components/profile/ProfileSidebar";
-import { CarPlaceholderIcon } from "@/components/icons";
 
 export default function ProfilePage() {
   return (

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Noto_Sans } from "next/font/google";
-import AntdProvider from "@/components/providers/AntdProvider";
-import Navbar from "@/components/layout/Navbar";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
+import Navbar from "@/components/layout/Navbar";
+import AntdProvider from "@/components/providers/AntdProvider";
+import { AuthProvider } from "@/components/providers/AuthProvider";
 import "antd/dist/reset.css";
 import "./globals.css";
 
@@ -15,8 +16,8 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "МОНКАР — Монголын хамгийн том машины зах зээл",
-  description: "MonCar UI-г Next.js App Router болон Tailwind дээр component систем болгон шилжүүлсэн хувилбар.",
+  title: "Монкар — Монголын автомашины marketplace",
+  description: "Moncar автомашины marketplace, үйлчилгээ, зээлийн хүсэлт, хадгалсан зарын хэрэглэгчийн урсгал.",
 };
 
 export default function RootLayout({
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body className={`${notoSans.className} ${notoSans.variable} bg-[var(--gray-50)] text-[var(--gray-900)] antialiased`}>
         <AntdRegistry>
           <AntdProvider>
-            <Navbar />
-            <main>{children}</main>
-            <MobileBottomNav />
+            <AuthProvider>
+              <Navbar />
+              <main>{children}</main>
+              <MobileBottomNav />
+            </AuthProvider>
           </AntdProvider>
         </AntdRegistry>
       </body>

@@ -1,15 +1,19 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button as AntButton, Form } from "antd";
 import AuthCard from "@/components/auth/AuthCard";
+import { CheckIcon } from "@/components/icons";
+import { useAuth } from "@/components/providers/AuthProvider";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { CheckIcon } from "@/components/icons";
 
 type AuthState = "login" | "register" | "otp" | "forgot" | "success";
 
 export default function AuthPage() {
+  const router = useRouter();
+  const { login } = useAuth();
   const [state, setState] = useState<AuthState>("login");
   const [timer, setTimer] = useState(300);
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -44,7 +48,7 @@ export default function AuthPage() {
     <div className="flex min-h-[calc(100vh-64px)] items-center justify-center bg-gray-50 px-4 py-10">
       <div className="w-full max-w-[440px]">
         {state === "login" ? (
-          <AuthCard title="МОНКАР" subtitle="Тавтай морилно уу! Нэвтэрч орно уу.">
+          <AuthCard title="MONCAR" subtitle="Тавтай морилно уу! Нэвтэрч орно уу.">
             <Form component="div" className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
@@ -59,7 +63,13 @@ export default function AuthPage() {
                   Нууц үг мартсан?
                 </AntButton>
               </div>
-              <Button href="/profile" fullWidth>
+              <Button
+                fullWidth
+                onClick={() => {
+                  login();
+                  router.push("/profile");
+                }}
+              >
                 Нэвтрэх
               </Button>
               <div className="flex items-center gap-3 text-[13px] text-gray-400 before:h-px before:flex-1 before:bg-gray-200 after:h-px after:flex-1 after:bg-gray-200">
@@ -73,7 +83,7 @@ export default function AuthPage() {
         ) : null}
 
         {state === "register" ? (
-          <AuthCard title="МОНКАР" subtitle="Шинэ бүртгэл үүсгэх">
+          <AuthCard title="MONCAR" subtitle="Шинэ бүртгэл үүсгэх">
             <Form component="div" className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
@@ -83,7 +93,7 @@ export default function AuthPage() {
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нууц үг</label>
                 <Input type="password" placeholder="••••••••" />
                 <div className="mt-[-4px] rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 text-xs text-gray-500">
-                  🔒 Нууц үг 8–25 тэмдэгттэй, Latin үсэг, тоо, тусгай тэмдэгт агуулсан байна.
+                  🔒 Нууц үг 8–25 тэмдэгттэй, латин үсэг, тоо, тусгай тэмдэгт агуулсан байна.
                 </div>
               </div>
               <div className="flex flex-col gap-1">
@@ -104,7 +114,7 @@ export default function AuthPage() {
         ) : null}
 
         {state === "otp" ? (
-          <AuthCard title="МОНКАР" subtitle="📱 +976 9900 0000 дугаарт OTP илгээлээ">
+          <AuthCard title="MONCAR" subtitle="📱 +976 9900 0000 дугаарт OTP илгээлээ">
             <Form component="div" className="flex flex-col gap-4">
               <div className="flex justify-center gap-[10px]">
                 {otp.map((value, index) => (
@@ -146,7 +156,7 @@ export default function AuthPage() {
         ) : null}
 
         {state === "forgot" ? (
-          <AuthCard title="МОНКАР" subtitle="Утасны дугаараа оруулна уу">
+          <AuthCard title="MONCAR" subtitle="Утасны дугаараа оруулна уу">
             <Form component="div" className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
@@ -168,7 +178,14 @@ export default function AuthPage() {
               <div className="mx-auto mb-4 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-green-bg">
                 <CheckIcon className="h-8 w-8 stroke-green-active" />
               </div>
-              <Button href="/" fullWidth className="mt-4">
+              <Button
+                fullWidth
+                className="mt-4"
+                onClick={() => {
+                  login();
+                  router.push("/");
+                }}
+              >
                 Нүүр хуудас руу
               </Button>
             </div>

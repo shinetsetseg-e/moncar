@@ -28,9 +28,9 @@ export default function SearchCard() {
           </Select>
         </div>
         <div className="flex flex-col gap-1">
-          <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Модел</label>
+          <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Модель</label>
           <Select>
-            <option>Модел сонгоно уу</option>
+            <option>Модель сонгоно уу</option>
             <option>Prius</option>
             <option>Land Cruiser</option>
             <option>RX450h</option>
@@ -47,14 +47,14 @@ export default function SearchCard() {
         </div>
       </div>
       <div className="mb-4 flex flex-col gap-1">
-        <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Үнэний хязгаар (₮)</label>
+        <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Үнийн хязгаар (₮)</label>
         <div className="flex items-center gap-2 text-xs text-gray-500">
           <Input className="text-center" placeholder="₮0" />
           <span>—</span>
           <Input className="text-center" placeholder="₮200,000,000" />
         </div>
       </div>
-      <Button href="/search" size="lg" fullWidth>
+      <Button href="/marketplace" size="lg" fullWidth>
         <SearchIcon />
         Хайх
       </Button>
