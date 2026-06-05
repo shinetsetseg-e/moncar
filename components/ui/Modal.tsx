@@ -1,10 +1,11 @@
+import { X } from "lucide-react";
 import type { ReactNode } from "react";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 interface Props {
   open: boolean;
-  title: string;
+  title: ReactNode;
   children: ReactNode;
   onClose: () => void;
   actions?: ReactNode;
@@ -32,7 +33,7 @@ export default function Modal({ open, title, children, onClose, actions }: Props
             className="flex h-8 w-8 items-center justify-center rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200"
             onClick={onClose}
           >
-            ✕
+            <X className="h-4 w-4" strokeWidth={2.2} />
           </button>
         </div>
         <div className="flex flex-col gap-[14px]">{children}</div>

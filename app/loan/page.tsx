@@ -1,9 +1,10 @@
+import { CreditCard } from "lucide-react";
 import { Checkbox, Form } from "antd";
+import { CarPlaceholderIcon } from "@/components/icons";
+import { getListingById } from "@/data/listings";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
-import { CarPlaceholderIcon } from "@/components/icons";
-import { getListingById } from "@/data/listings";
 
 interface LoanPageProps {
   searchParams?: Promise<{
@@ -94,7 +95,8 @@ export default async function LoanPage({ searchParams }: LoanPageProps) {
           ))}
         </div>
         <Button size="lg" fullWidth className="mt-1">
-          💳 Хүсэлт илгээх
+          <CreditCard className="h-4 w-4" strokeWidth={2.2} />
+          Хүсэлт илгээх
         </Button>
       </Form>
     </div>

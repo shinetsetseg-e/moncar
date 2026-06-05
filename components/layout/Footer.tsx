@@ -1,5 +1,22 @@
+import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { footerColumns } from "@/data/navigation";
+
+function FooterIcon({ icon }: { icon?: "phone" | "mail" | "pin" }) {
+  if (icon === "phone") {
+    return <Phone className="h-4 w-4" strokeWidth={2} />;
+  }
+
+  if (icon === "mail") {
+    return <Mail className="h-4 w-4" strokeWidth={2} />;
+  }
+
+  if (icon === "pin") {
+    return <MapPin className="h-4 w-4" strokeWidth={2} />;
+  }
+
+  return null;
+}
 
 export default function Footer() {
   return (
@@ -23,7 +40,8 @@ export default function Footer() {
                     {link.label}
                   </Link>
                 ) : (
-                  <span key={link.label} className="mb-2 block text-sm text-gray-400">
+                  <span key={link.label} className="mb-2 flex items-center gap-2 text-sm text-gray-400">
+                    <FooterIcon icon={link.icon} />
                     {link.label}
                   </span>
                 ),

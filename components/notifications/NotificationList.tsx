@@ -1,15 +1,13 @@
 "use client";
 
+import { Bell, CircleAlert, CircleCheck, CreditCard } from "lucide-react";
 import { notifications } from "@/data/notifications";
 
 function iconForTone(tone: "primary" | "orange" | "green" | "gray" = "gray") {
   if (tone === "primary") {
     return (
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-primary-100">
-        <svg width="20" height="20" fill="none" stroke="var(--primary-600)" strokeWidth="2" viewBox="0 0 24 24">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          <polyline points="22 4 12 14.01 9 11.01" />
-        </svg>
+        <CircleCheck className="h-5 w-5 text-primary-600" strokeWidth={2} />
       </div>
     );
   }
@@ -17,11 +15,7 @@ function iconForTone(tone: "primary" | "orange" | "green" | "gray" = "gray") {
   if (tone === "orange") {
     return (
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-orange-bg">
-        <svg width="20" height="20" fill="none" stroke="var(--orange-warning)" strokeWidth="2" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10" />
-          <line x1="12" y1="8" x2="12" y2="12" />
-          <line x1="12" y1="16" x2="12.01" y2="16" />
-        </svg>
+        <CircleAlert className="h-5 w-5 text-orange-warning" strokeWidth={2} />
       </div>
     );
   }
@@ -29,19 +23,14 @@ function iconForTone(tone: "primary" | "orange" | "green" | "gray" = "gray") {
   if (tone === "green") {
     return (
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-green-bg">
-        <svg width="20" height="20" fill="none" stroke="var(--green-active)" strokeWidth="2" viewBox="0 0 24 24">
-          <rect x="2" y="5" width="20" height="14" rx="2" />
-          <line x1="2" y1="10" x2="22" y2="10" />
-        </svg>
+        <CreditCard className="h-5 w-5 text-green-active" strokeWidth={2} />
       </div>
     );
   }
 
   return (
     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-primary-100">
-      <svg width="20" height="20" fill="none" stroke="var(--gray-400)" strokeWidth="2" viewBox="0 0 24 24">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-      </svg>
+      <Bell className="h-5 w-5 text-gray-400" strokeWidth={2} />
     </div>
   );
 }

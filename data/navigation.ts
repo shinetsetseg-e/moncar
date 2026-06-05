@@ -28,9 +28,9 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Холбоо барих",
     links: [
-      { label: "📞 +976 7700-0000" },
-      { label: "✉️ info@moncar.mn" },
-      { label: "📍 УБ хот, Монгол улс" },
+      { label: "+976 7700-0000", icon: "phone" },
+      { label: "info@moncar.mn", icon: "mail" },
+      { label: "УБ хот, Монгол улс", icon: "pin" },
     ],
   },
 ];

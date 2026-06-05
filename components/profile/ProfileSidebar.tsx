@@ -1,61 +1,29 @@
 "use client";
 
+import {
+  Bell,
+  CreditCard,
+  Grid2x2,
+  Heart,
+  Lock,
+  LogOut,
+  PlusCircle,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { HeartIcon, UserIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { profileMenuItems } from "@/data/profile";
 
 function SidebarIcon({ icon }: { icon: (typeof profileMenuItems)[number]["icon"] }) {
-  if (icon === "user") return <UserIcon className="h-4 w-4" />;
-  if (icon === "bell") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-      </svg>
-    );
-  }
-  if (icon === "grid") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18M9 21V9" />
-      </svg>
-    );
-  }
-  if (icon === "plus") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-        <path d="M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
-      </svg>
-    );
-  }
-  if (icon === "card") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-        <rect x="2" y="5" width="20" height="14" rx="2" />
-        <line x1="2" y1="10" x2="22" y2="10" />
-      </svg>
-    );
-  }
-  if (icon === "heart") return <HeartIcon className="h-4 w-4" />;
-  if (icon === "lock") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-        <rect x="3" y="11" width="18" height="11" rx="2" />
-        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-      <polyline points="16 17 21 12 16 7" />
-      <line x1="21" y1="12" x2="9" y2="12" />
-    </svg>
-  );
+  if (icon === "user") return <User className="h-4 w-4" strokeWidth={2} />;
+  if (icon === "bell") return <Bell className="h-4 w-4" strokeWidth={2} />;
+  if (icon === "grid") return <Grid2x2 className="h-4 w-4" strokeWidth={2} />;
+  if (icon === "plus") return <PlusCircle className="h-4 w-4" strokeWidth={2} />;
+  if (icon === "card") return <CreditCard className="h-4 w-4" strokeWidth={2} />;
+  if (icon === "heart") return <Heart className="h-4 w-4" strokeWidth={2} />;
+  if (icon === "lock") return <Lock className="h-4 w-4" strokeWidth={2} />;
+  return <LogOut className="h-4 w-4" strokeWidth={2} />;
 }
 
 export default function ProfileSidebar() {

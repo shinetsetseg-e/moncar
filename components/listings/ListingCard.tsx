@@ -1,9 +1,10 @@
+import { Building2, UserRound } from "lucide-react";
 import { Checkbox } from "antd";
 import Link from "next/link";
 import type { Listing } from "@/types";
+import { CarPlaceholderIcon, ClockIcon, HeartIcon, PinIcon } from "@/components/icons";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import { CarPlaceholderIcon, ClockIcon, HeartIcon, PinIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -72,11 +73,7 @@ export default function ListingCard({
         {mode === "saved" ? (
           <div className="border-t border-gray-100 pt-2.5">
             {selectable ? (
-              <Checkbox
-                checked={selected}
-                className="mb-3 !text-xs !text-gray-500"
-                onChange={(event) => onSelectedChange?.(event.target.checked)}
-              >
+              <Checkbox checked={selected} className="mb-3 !text-xs !text-gray-500" onChange={(event) => onSelectedChange?.(event.target.checked)}>
                 Харьцуулахад сонгох
               </Checkbox>
             ) : null}
@@ -91,7 +88,10 @@ export default function ListingCard({
           </div>
         ) : (
           <div className="flex items-center justify-between border-t border-gray-100 pt-2.5">
-            <span className="text-xs text-gray-500">{listing.sellerLabel}</span>
+            <span className="inline-flex items-center gap-1.5 text-xs text-gray-500">
+              {listing.sellerType === "dealer" ? <Building2 className="h-3.5 w-3.5" strokeWidth={2} /> : <UserRound className="h-3.5 w-3.5" strokeWidth={2} />}
+              {listing.sellerLabel}
+            </span>
             <Checkbox className="!text-xs !text-gray-500">Харьцуулах</Checkbox>
           </div>
         )}

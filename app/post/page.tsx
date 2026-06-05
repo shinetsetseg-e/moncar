@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { ChevronLeft, ChevronRight, CircleAlert } from "lucide-react";
 import { Form } from "antd";
+import { useState } from "react";
+import { CheckIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
-import { CheckIcon } from "@/components/icons";
 
 export default function PostPage() {
   const [success, setSuccess] = useState(false);
@@ -19,18 +20,18 @@ export default function PostPage() {
 
       <div className="mb-8 flex items-center">
         {[
-          { num: "✓", label: "Мэдээлэл", active: true, done: true },
-          { num: "2", label: "Техник", active: true, done: false },
-          { num: "3", label: "Үнэ/Байршил", active: false, done: false },
-          { num: "4", label: "Зураг", active: false, done: false },
-          { num: "5", label: "Preview", active: false, done: false },
+          { label: "Мэдээлэл", active: true, done: true },
+          { label: "Техник", active: true, done: false },
+          { label: "Үнэ/Байршил", active: false, done: false },
+          { label: "Зураг", active: false, done: false },
+          { label: "Preview", active: false, done: false },
         ].map((step, index) => (
           <div key={step.label} className="relative flex flex-1 flex-col items-center gap-1">
             {index < 4 ? (
               <div className={`absolute left-[calc(50%+14px)] right-[calc(-50%+14px)] top-[14px] h-0.5 ${step.done ? "bg-primary-600" : "bg-gray-200"}`} />
             ) : null}
             <div className={`z-[1] flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold ${step.active ? "bg-primary-600 text-white" : "bg-gray-200 text-gray-500"}`}>
-              {step.num}
+              {step.done ? <CheckIcon className="h-3.5 w-3.5" /> : index + 1}
             </div>
             <div className={`text-center text-[11px] font-semibold ${step.active ? "text-primary-600" : "text-gray-500"}`}>{step.label}</div>
           </div>
@@ -52,7 +53,7 @@ export default function PostPage() {
                 </Select>
               </div>
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Модел *</label>
+                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Модель *</label>
                 <Select>
                   <option>Land Cruiser</option>
                   <option>Prius</option>
@@ -82,11 +83,7 @@ export default function PostPage() {
               <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Арлын дугаар *</label>
               <Input placeholder="XXXXXXXX" className="uppercase" />
               <div className="mt-1 flex items-center gap-1 text-xs text-red-danger">
-                <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
+                <CircleAlert className="h-[13px] w-[13px] shrink-0" strokeWidth={2} />
                 Арлын дугаар Latin үсгээр байх ёстой
               </div>
             </div>
@@ -119,10 +116,16 @@ export default function PostPage() {
             </div>
           </div>
           <div className="mt-6 flex items-center justify-between border-t border-gray-200 pt-5">
-            <Button variant="ghost">← Буцах</Button>
+            <Button variant="ghost">
+              <ChevronLeft className="h-4 w-4" strokeWidth={2.2} />
+              Буцах
+            </Button>
             <div className="flex gap-2.5">
               <Button variant="ghost">Ноорог хадгалах</Button>
-              <Button onClick={() => setSuccess(true)}>Дараах →</Button>
+              <Button onClick={() => setSuccess(true)}>
+                Дараах
+                <ChevronRight className="h-4 w-4" strokeWidth={2.2} />
+              </Button>
             </div>
           </div>
         </Form>

@@ -1,13 +1,12 @@
 "use client";
 
-import { BellIcon, UserIcon } from "@/components/icons";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { BellIcon, HeartIcon, UserIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
 import Button from "@/components/ui/Button";
 import { navbarLinks } from "@/data/navigation";
 import { isRouteActive } from "@/lib/utils";
-import { HeartOutlined } from "@ant-design/icons";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -41,43 +40,26 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="ml-auto flex shrink-0 items-center gap-2">                
-          <Button
-            href="/saved"
-            variant="white"
-            size="sm"
-            aria-label="Хадгалсан машинууд"
-          >
-            <HeartOutlined className="!text-red-500" />
-          </Button>  
+        <div className="ml-auto flex shrink-0 items-center gap-2">
+          <Button href="/saved" variant="white" size="sm" aria-label="Хадгалсан машинууд">
+            <HeartIcon className="text-red-500" />
+          </Button>
           <Button variant="white" href="/post" size="sm">
             Зар нэмэх
           </Button>
-          {showAuthenticatedActions ? (            <>
-
-              <Button
-                href="/notifications"
-                variant="white"
-                size="sm"
-                aria-label="Мэдэгдлүүд"
-              >
-                <BellIcon className="!text-yellow-500" />
+          {showAuthenticatedActions ? (
+            <>
+              <Button href="/notifications" variant="white" size="sm" aria-label="Мэдэгдлүүд">
+                <BellIcon className="text-yellow-500" />
               </Button>
-              <Button
-                href="/profile"
-                variant="white"
-                size="sm"
-                aria-label="Миний профайл"
-              >
-                <UserIcon className="!text-primary-500" />
+              <Button href="/profile" variant="white" size="sm" aria-label="Миний профайл">
+                <UserIcon className="text-primary-500" />
               </Button>
             </>
           ) : (
-            <>
-              <Button href="/auth" variant="white" size="sm">
-                Нэвтрэх
-              </Button>
-            </>
+            <Button href="/auth" variant="white" size="sm">
+              Нэвтрэх
+            </Button>
           )}
         </div>
       </div>

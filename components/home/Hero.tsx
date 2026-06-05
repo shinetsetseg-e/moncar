@@ -1,7 +1,7 @@
 "use client";
 
-import { SearchOutlined } from "@ant-design/icons";
 import { Button, Select, Slider } from "antd";
+import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -143,7 +143,8 @@ export default function Hero() {
               </div>
             </div>
 
-            <Button type="primary" shape="circle" icon={<SearchOutlined />} onClick={handleSearch} className="!h-12 !w-12" />
+
+            <Button type="primary" shape="circle" icon={<Search className="h-5 w-5"/>} onClick={handleSearch} className="!h-12 !w-12" />
           </div>
         </div>
       </div>

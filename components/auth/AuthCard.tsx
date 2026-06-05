@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import Card from "@/components/ui/Card";
 
 interface Props {
-  title: string;
-  subtitle: string;
+  title: ReactNode;
+  subtitle: ReactNode;
   children: ReactNode;
   center?: boolean;
   titleClassName?: string;

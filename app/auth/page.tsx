@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { ChevronLeft, Lock, Smartphone } from "lucide-react";
 import { Button as AntButton, Form } from "antd";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import AuthCard from "@/components/auth/AuthCard";
 import { CheckIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
@@ -92,8 +93,9 @@ export default function AuthPage() {
               <div className="flex flex-col gap-1">
                 <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нууц үг</label>
                 <Input type="password" placeholder="••••••••" />
-                <div className="mt-[-4px] rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 text-xs text-gray-500">
-                  🔒 Нууц үг 8–25 тэмдэгттэй, латин үсэг, тоо, тусгай тэмдэгт агуулсан байна.
+                <div className="mt-[-4px] flex items-start gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 text-xs text-gray-500">
+                  <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={2.2} />
+                  <span>Нууц үг 8–25 тэмдэгттэй, латин үсэг, тоо, тусгай тэмдэгт агуулсан байна.</span>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
@@ -114,7 +116,15 @@ export default function AuthPage() {
         ) : null}
 
         {state === "otp" ? (
-          <AuthCard title="MONCAR" subtitle="📱 +976 9900 0000 дугаарт OTP илгээлээ">
+          <AuthCard
+            title="MONCAR"
+            subtitle={
+              <span className="inline-flex items-center gap-2">
+                <Smartphone className="h-4 w-4" strokeWidth={2.2} />
+                +976 9900 0000 дугаарт OTP илгээлээ
+              </span>
+            }
+          >
             <Form component="div" className="flex flex-col gap-4">
               <div className="flex justify-center gap-[10px]">
                 {otp.map((value, index) => (
@@ -166,7 +176,8 @@ export default function AuthPage() {
                 OTP илгээх
               </Button>
               <Button variant="ghost" fullWidth onClick={() => setState("login")}>
-                ← Буцах
+                <ChevronLeft className="h-4 w-4" strokeWidth={2.2} />
+                Буцах
               </Button>
             </Form>
           </AuthCard>

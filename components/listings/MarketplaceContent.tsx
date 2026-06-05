@@ -1,10 +1,11 @@
-import Button from "@/components/ui/Button";
-import Badge from "@/components/ui/Badge";
-import Select from "@/components/ui/Select";
-import FilterSidebar from "@/components/listings/FilterSidebar";
-import ListingCard from "@/components/listings/ListingCard";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { GridIcon, ListIcon } from "@/components/icons";
 import { searchListings } from "@/data/listings";
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
+import FilterSidebar from "@/components/listings/FilterSidebar";
+import ListingCard from "@/components/listings/ListingCard";
+import Select from "@/components/ui/Select";
 
 export default function MarketplaceContent() {
   return (
@@ -40,13 +41,22 @@ export default function MarketplaceContent() {
 
         <div className="mb-3 flex flex-wrap gap-2">
           <Badge variant="premium" className="cursor-pointer px-3 py-[5px]">
-            Toyota ✕
+            <span className="inline-flex items-center gap-1">
+              Toyota
+              <X className="h-3 w-3" strokeWidth={2.2} />
+            </span>
           </Badge>
           <Badge variant="normal" className="cursor-pointer px-3 py-[5px]">
-            ₮20M – ₮100M ✕
+            <span className="inline-flex items-center gap-1">
+              ₮20M – ₮100M
+              <X className="h-3 w-3" strokeWidth={2.2} />
+            </span>
           </Badge>
           <Badge variant="normal" className="cursor-pointer px-3 py-[5px]">
-            2015–2023 ✕
+            <span className="inline-flex items-center gap-1">
+              2015–2023
+              <X className="h-3 w-3" strokeWidth={2.2} />
+            </span>
           </Badge>
         </div>
 
@@ -57,16 +67,23 @@ export default function MarketplaceContent() {
         </div>
 
         <div className="mt-8 flex items-center justify-center gap-2">
-          {["←", "1", "2", "3"].map((item, index) => (
+          <Button
+            className="!flex !h-9 !w-9 !items-center !justify-center !rounded-lg !border-gray-300 !bg-white !px-0 !py-0 !text-sm !text-gray-700 hover:!border-gray-400 hover:!bg-gray-50"
+            type="button"
+            variant="ghost"
+          >
+            <ChevronLeft className="h-4 w-4" strokeWidth={2.2} />
+          </Button>
+          {["1", "2", "3"].map((item, index) => (
             <Button
               key={item}
               className={`!flex !h-9 !w-9 !items-center !justify-center !rounded-lg !px-0 !py-0 !text-sm ${
-                index === 1
+                index === 0
                   ? "!border-primary-600 !bg-primary-600 !text-white"
                   : "!border-gray-300 !bg-white !text-gray-700 hover:!border-gray-400 hover:!bg-gray-50"
               }`}
               type="button"
-              variant={index === 1 ? "primary" : "ghost"}
+              variant={index === 0 ? "primary" : "ghost"}
             >
               {item}
             </Button>
@@ -76,7 +93,7 @@ export default function MarketplaceContent() {
             24
           </Button>
           <Button className="!flex !h-9 !w-9 !items-center !justify-center !rounded-lg !px-0 !py-0 !text-sm" type="button" variant="ghost">
-            →
+            <ChevronRight className="h-4 w-4" strokeWidth={2.2} />
           </Button>
         </div>
       </div>

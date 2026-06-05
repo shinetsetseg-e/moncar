@@ -1,12 +1,16 @@
+import { Search } from "lucide-react";
+import { SearchIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
-import { SearchIcon } from "@/components/icons";
 
 export default function SearchCard() {
   return (
     <div className="rounded-2xl border border-gray-200 p-7 shadow-[0_8px_32px_rgba(22,119,255,.08)]">
-      <h3 className="mb-5 text-base font-semibold text-gray-700">🔍 Машин хайх</h3>
+      <h3 className="mb-5 flex items-center gap-2 text-base font-semibold text-gray-700">
+        <Search className="h-4 w-4" strokeWidth={2} />
+        Машин хайх
+      </h3>
       <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div className="flex flex-col gap-1">
           <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Улс</label>

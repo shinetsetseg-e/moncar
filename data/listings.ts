@@ -10,7 +10,7 @@ export const featuredListings: Listing[] = [
     location: "УБ, Сүхбаатар",
     mileage: "85,000 км",
     sellerType: "dealer",
-    sellerLabel: "🏢 Dealer",
+    sellerLabel: "Dealer",
     sellerVerified: true,
     badges: [
       { label: "Premium", variant: "premium" },
@@ -38,7 +38,7 @@ export const featuredListings: Listing[] = [
     location: "УБ, Баянзүрх",
     mileage: "42,000 км",
     sellerType: "private",
-    sellerLabel: "👤 Хувь хүн",
+    sellerLabel: "Хувь хүн",
     badges: [{ label: "ШИНЭ", variant: "new" }],
     meta: [
       { label: "2020" },
@@ -61,7 +61,7 @@ export const featuredListings: Listing[] = [
     location: "УБ, Баянзүрх",
     mileage: "110,000 км",
     sellerType: "private",
-    sellerLabel: "👤 Хувь хүн",
+    sellerLabel: "Хувь хүн",
     badges: [
       { label: "HOT", variant: "hot" },
       { label: "Зээлээр авах", variant: "loan" },
@@ -87,7 +87,7 @@ export const featuredListings: Listing[] = [
     location: "УБ, Хан-Уул",
     mileage: "30,000 км",
     sellerType: "dealer",
-    sellerLabel: "🏢 Dealer",
+    sellerLabel: "Dealer",
     badges: [{ label: "VERIFIED", variant: "verified" }],
     meta: [
       { label: "2021" },
@@ -113,7 +113,7 @@ export const searchListings: Listing[] = [
     location: "УБ, Баянгол",
     mileage: "95,000 км",
     sellerType: "private",
-    sellerLabel: "👤 Хувь хүн",
+    sellerLabel: "Хувь хүн",
     badges: [{ label: "Зээлээр авах", variant: "loan" }],
     meta: [{ label: "2018 · 95,000 км" }, { label: "УБ, Баянгол" }],
     loanEligible: true,
@@ -132,7 +132,7 @@ export const searchListings: Listing[] = [
     location: "УБ, Хан-Уул",
     mileage: "55,000 км",
     sellerType: "dealer",
-    sellerLabel: "🏢 Dealer",
+    sellerLabel: "Dealer",
     badges: [{ label: "HOT", variant: "hot" }],
     meta: [{ label: "2020 · 55,000 км" }, { label: "УБ, Хан-Уул" }],
     engine: "2.5L",

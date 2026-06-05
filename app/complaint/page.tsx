@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Upload } from "lucide-react";
 import { Form } from "antd";
+import { useState } from "react";
+import { CarPlaceholderIcon, CheckIcon } from "@/components/icons";
 import Button from "@/components/ui/Button";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
-import { CarPlaceholderIcon, CheckIcon } from "@/components/icons";
 
 export default function ComplaintPage() {
   const [success, setSuccess] = useState(false);
@@ -39,17 +40,13 @@ export default function ComplaintPage() {
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Дэлгэрэнгүй тайлбар *</label>
-          <Textarea rows={4} placeholder="Гомдлынхоо дэлгэрэнгүйг бичнэ үү..." className="resize-y" />
+          <Textarea rows={4} placeholder="Гомдлынхаа дэлгэрэнгүйг бичнэ үү..." className="resize-y" />
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Зураг / Screenshot (заавал биш)</label>
           <div className="cursor-pointer rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 p-6 text-center">
             <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary-50">
-              <svg width="20" height="20" fill="none" stroke="var(--primary-600)" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
+              <Upload className="h-5 w-5 text-primary-600" strokeWidth={2.2} />
             </div>
             <div className="mb-1 text-sm text-gray-600">Зураг оруулах</div>
             <div className="text-xs text-gray-400">PNG, JPG, WEBP · 5MB хүртэл</div>

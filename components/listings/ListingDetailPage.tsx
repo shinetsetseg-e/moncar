@@ -1,7 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import {
+  ArrowUpRight,
+  BarChart3,
+  Building2,
+  ChevronRight,
+  CircleCheck,
+  CreditCard,
+  Heart,
+  Leaf,
+  Phone,
+  ShieldCheck,
+  Star,
+  TriangleAlert,
+  Upload,
+} from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 import type { Listing } from "@/types";
 import ListingGallery from "@/components/listings/ListingGallery";
 import SpecsGrid from "@/components/listings/SpecsGrid";
@@ -25,11 +40,11 @@ export default function ListingDetailPage({ listing }: Props) {
           <Link href="/" className="cursor-pointer">
             Нүүр
           </Link>
-          <span className="text-gray-300">›</span>
+          <ChevronRight className="h-3.5 w-3.5 text-gray-300" strokeWidth={2} />
           <Link href="/marketplace" className="cursor-pointer">
             Marketplace
           </Link>
-          <span className="text-gray-300">›</span>
+          <ChevronRight className="h-3.5 w-3.5 text-gray-300" strokeWidth={2} />
           <span className="text-gray-700">{listing.title}</span>
         </div>
 
@@ -37,10 +52,30 @@ export default function ListingDetailPage({ listing }: Props) {
           <div>
             <ListingGallery />
             <div className="mb-5 flex flex-wrap gap-2">
-              <Badge variant="premium">⭐ Premium</Badge>
-              <Badge variant="loan">✓ Зээлээр авах боломжтой</Badge>
-              <Badge variant="green">🌿 Ногоон</Badge>
-              <Badge variant="verified">✓ VERIFIED</Badge>
+              <Badge variant="premium">
+                <span className="inline-flex items-center gap-1">
+                  <Star className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  Premium
+                </span>
+              </Badge>
+              <Badge variant="loan">
+                <span className="inline-flex items-center gap-1">
+                  <CreditCard className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  Зээлээр авах боломжтой
+                </span>
+              </Badge>
+              <Badge variant="green">
+                <span className="inline-flex items-center gap-1">
+                  <Leaf className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  Ногоон
+                </span>
+              </Badge>
+              <Badge variant="verified">
+                <span className="inline-flex items-center gap-1">
+                  <CircleCheck className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  VERIFIED
+                </span>
+              </Badge>
             </div>
             <div className="mb-1.5 text-2xl font-bold text-gray-900">{listing.title}</div>
             <div className="mb-3 text-[32px] font-bold text-primary-600">{listing.price}</div>
@@ -57,7 +92,10 @@ export default function ListingDetailPage({ listing }: Props) {
               ]}
             />
             <div className="mb-6 rounded-xl border border-primary-200 bg-primary-50 p-5">
-              <h4 className="mb-3.5 text-[13px] font-bold uppercase tracking-[0.8px] text-primary-700">📊 Зах зээлийн статистик</h4>
+              <h4 className="mb-3.5 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.8px] text-primary-700">
+                <BarChart3 className="h-4 w-4" strokeWidth={2} />
+                Зах зээлийн статистик
+              </h4>
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { label: "Хамгийн бага үнэ", value: "₮72,000,000" },
@@ -75,10 +113,20 @@ export default function ListingDetailPage({ listing }: Props) {
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-100 text-lg font-bold text-primary-600">А</div>
               <div className="flex-1">
                 <div className="text-[15px] font-bold text-gray-900">АвтоМон Дилер</div>
-                <div className="text-[13px] text-gray-500">🏢 Dealer · ⭐ 4.8 (128 үнэлгээ)</div>
+                <div className="inline-flex items-center gap-1.5 text-[13px] text-gray-500">
+                  <Building2 className="h-3.5 w-3.5" strokeWidth={2} />
+                  Dealer ·
+                  <Star className="h-3.5 w-3.5" strokeWidth={2} />
+                  4.8 (128 үнэлгээ)
+                </div>
                 <div className="text-[13px] text-gray-400">УБ, Сүхбаатар дүүрэг</div>
               </div>
-              <Badge variant="verified">✓ Verified</Badge>
+              <Badge variant="verified">
+                <span className="inline-flex items-center gap-1">
+                  <CircleCheck className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  Verified
+                </span>
+              </Badge>
             </div>
           </div>
 
@@ -90,24 +138,40 @@ export default function ListingDetailPage({ listing }: Props) {
               </div>
               <div className="flex flex-col gap-2.5">
                 <Button size="lg" fullWidth>
-                  📞 Утас харах / Залгах
+                  <Phone className="h-4 w-4" strokeWidth={2.2} />
+                  Утас харах / Залгах
                 </Button>
                 <Button href={`/loan?listing=${listing.id}`} variant="secondary" fullWidth>
-                  💳 Зээлийн хүсэлт илгээх
+                  <CreditCard className="h-4 w-4" strokeWidth={2.2} />
+                  Зээлийн хүсэлт илгээх
                 </Button>
                 <div className="grid grid-cols-2 gap-2">
-                  <Button variant="ghost">❤️ Хадгалах</Button>
-                  <Button variant="ghost">↗ Share</Button>
+                  <Button variant="ghost">
+                    <Heart className="h-4 w-4" strokeWidth={2.2} />
+                    Хадгалах
+                  </Button>
+                  <Button variant="ghost">
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+                    Share
+                  </Button>
                 </div>
                 <Button variant="ghost" className="border-red-danger text-red-danger hover:bg-red-bg hover:text-red-danger" onClick={() => setOpen(true)}>
-                  ⚠️ Гомдол илгээх
+                  <TriangleAlert className="h-4 w-4" strokeWidth={2.2} />
+                  Гомдол илгээх
                 </Button>
               </div>
-              <div className="mt-4 rounded-lg bg-primary-50 p-3 text-[13px] text-primary-700">
-                🔒 <strong>Escrow хамгаалалт</strong> ашиглаад аюулгүй худалдан авалт хийж болно.{" "}
-                <Link href="/escrow" className="underline">
-                  Дэлгэрэнгүй →
-                </Link>
+              <div className="mt-4 text-[13px] text-primary-700">
+                <div className="rounded-lg bg-primary-50 p-3">
+                  <span className="inline-flex items-center gap-1.5">
+                    <ShieldCheck className="h-4 w-4" strokeWidth={2.2} />
+                    <strong>Escrow хамгаалалт</strong>
+                  </span>{" "}
+                  ашиглаад аюулгүй худалдан авалт хийж болно.{" "}
+                  <Link href="/escrow" className="inline-flex items-center gap-1 underline">
+                    Дэлгэрэнгүй
+                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -116,7 +180,12 @@ export default function ListingDetailPage({ listing }: Props) {
 
       <Modal
         open={open}
-        title="⚠️ Гомдол илгээх"
+        title={
+          <span className="inline-flex items-center gap-2">
+            <TriangleAlert className="h-5 w-5 text-red-danger" strokeWidth={2.2} />
+            Гомдол илгээх
+          </span>
+        }
         onClose={() => setOpen(false)}
         actions={
           <>
@@ -145,7 +214,10 @@ export default function ListingDetailPage({ listing }: Props) {
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Зураг / Screenshot (заавал биш)</label>
-          <div className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-4 text-center text-[13px] text-gray-500">📎 Файл оруулах</div>
+          <div className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-300 p-4 text-center text-[13px] text-gray-500">
+            <Upload className="h-4 w-4" strokeWidth={2.2} />
+            Файл оруулах
+          </div>
         </div>
       </Modal>
     </>

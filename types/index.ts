@@ -57,6 +57,7 @@ export interface FooterColumn {
   links: Array<{
     href?: string;
     label: string;
+    icon?: "phone" | "mail" | "pin";
   }>;
 }
 

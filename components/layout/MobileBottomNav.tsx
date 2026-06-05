@@ -1,28 +1,11 @@
 "use client";
 
+import { House, Plus } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HeartIcon, SearchIcon, UserIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { isRouteActive } from "@/lib/utils";
-
-function HomeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-[22px] w-[22px]">
-      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <polyline points="9 22 9 12 15 12 15 22" />
-    </svg>
-  );
-}
-
-function PlusIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" className="h-[22px] w-[22px]">
-      <line x1="12" y1="5" x2="12" y2="19" />
-      <line x1="5" y1="12" x2="19" y2="12" />
-    </svg>
-  );
-}
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
@@ -33,9 +16,7 @@ export default function MobileBottomNav() {
     { href: "/marketplace", label: "Market" },
     { href: "/post", label: "Зар" },
     { href: "/saved", label: "Saved" },
-    isReady && isAuthenticated
-      ? { href: "/profile", label: "Профайл" }
-      : { href: "/auth", label: "Нэвтрэх" },
+    isReady && isAuthenticated ? { href: "/profile", label: "Профайл" } : { href: "/auth", label: "Нэвтрэх" },
   ];
 
   return (
@@ -44,19 +25,19 @@ export default function MobileBottomNav() {
         {mobileNavLinks.map((item) => {
           const active = isRouteActive(pathname, item.href);
           const icon =
-            item.href === "/"
-              ? <HomeIcon />
-              : item.href === "/marketplace"
-                ? <SearchIcon className="h-[22px] w-[22px]" />
-                : item.href === "/post"
-                  ? (
-                    <div className="-mt-4 flex h-11 w-11 items-center justify-center rounded-full bg-primary-600 shadow-[0_4px_12px_rgba(22,119,255,.3)]">
-                      <PlusIcon />
-                    </div>
-                  )
-                  : item.href === "/saved"
-                    ? <HeartIcon className="h-[22px] w-[22px]" />
-                    : <UserIcon className="h-[22px] w-[22px]" />;
+            item.href === "/" ? (
+              <House className="h-[22px] w-[22px]" strokeWidth={2} />
+            ) : item.href === "/marketplace" ? (
+              <SearchIcon className="h-[22px] w-[22px]" />
+            ) : item.href === "/post" ? (
+              <div className="-mt-4 flex h-11 w-11 items-center justify-center rounded-full bg-primary-600 shadow-[0_4px_12px_rgba(22,119,255,.3)]">
+                <Plus className="h-[22px] w-[22px] text-white" strokeWidth={2.5} />
+              </div>
+            ) : item.href === "/saved" ? (
+              <HeartIcon className="h-[22px] w-[22px]" />
+            ) : (
+              <UserIcon className="h-[22px] w-[22px]" />
+            );
 
           return (
             <Link

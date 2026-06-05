@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+import { featuredListings } from "@/data/listings";
 import BrandGrid from "@/components/home/BrandGrid";
 import Hero from "@/components/home/Hero";
 import PromoBanners from "@/components/home/PromoBanners";
@@ -5,7 +7,6 @@ import Footer from "@/components/layout/Footer";
 import ListingCard from "@/components/listings/ListingCard";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { featuredListings } from "@/data/listings";
 
 export default function HomePage() {
   return (
@@ -19,7 +20,8 @@ export default function HomePage() {
             title="Онцлох машинууд"
             action={
               <Button href="/marketplace" variant="ghost">
-                Бүгдийг үзэх →
+                Бүгдийг үзэх
+                <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
               </Button>
             }
           />
