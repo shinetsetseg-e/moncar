@@ -5,8 +5,8 @@ import { useAuth } from "@/components/providers/AuthProvider";
 import { navbarLinks } from "@/data/navigation";
 import { applyBrandTheme, brandThemes, getStoredBrandThemeName } from "@/lib/brandThemes";
 import { cn, isRouteActive } from "@/lib/utils";
-import { Button, IconButton, NavLink } from "@/shared";
-import { Check, Palette } from "lucide-react";
+import { Button, NavLink } from "@/shared";
+import { Check, CirclePlus, LogInIcon, Palette } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -54,24 +54,26 @@ function NavbarThemePicker() {
 
   return (
     <div ref={pickerRef} className="relative">
-      <button
+      <Button
         type="button"
+        variant="outline-white"
+        size="sm"
         aria-label="Theme сонгох"
         aria-expanded={open}
-        className="relative flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition hover:border-primary-200 hover:bg-primary-50 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:ring-offset-2"
+        className="relative"
         onClick={() => setOpen((value) => !value)}
       >
-        <Palette className="h-4 w-4" />
+        <Palette className="h-5 w-5" />
         {mounted && (
           <span
-              className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-full border border-white"
-              style={{ backgroundColor: activeTheme.palette[500] }}
-            />
-          )}
-      </button>
+            className="absolute bottom-2 right-2 h-2.5 w-2.5 rounded-full border border-white"
+            style={{ backgroundColor: activeTheme.palette[500] }}
+          />
+        )}
+      </Button>
 
       {open && (
-        <div className="absolute right-0 top-11 z-[120] w-[252px] rounded-2xl border border-gray-200 bg-white p-3 shadow-[0_12px_32px_rgba(16,24,40,.14)]">
+        <div className="absolute right-0 top-14 z-[120] w-[252px] rounded-2xl border border-gray-200 bg-white p-3 shadow-[0_12px_32px_rgba(16,24,40,.14)]">
           <div className="mb-2 flex items-center justify-between gap-3">
             <div>
               <div className="text-xs font-semibold text-gray-900">Theme</div>
@@ -125,41 +127,82 @@ export default function Navbar() {
   const showAuthenticatedActions = isReady && isAuthenticated;
 
   return (
-    <nav className="sticky top-0 z-[100] border-b border-gray-200 bg-white shadow-[0_1px_4px_rgba(16,24,40,.06)]">
-      <div className="mx-auto flex h-16 max-w-[1280px] items-center gap-4 px-4 md:gap-8 md:px-8">
-        <div className="flex min-w-0 items-center gap-2 md:gap-8">
-          <Link href="/" className="shrink-0 text-[22px] font-bold tracking-[1px] text-primary-600">
+    <nav className="sticky top-0 z-[100] border-b border-[#f1f1f3] bg-white">
+      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center gap-4 px-4 md:gap-8 md:px-8">
+        <div className="flex min-w-0 items-center gap-8">
+          <Link
+            href="/"
+            className="shrink-0 text-[28px] font-extrabold tracking-[2px] text-primary-600"
+          >
             MONCAR
           </Link>
 
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-7 md:flex">
             {navbarLinks.map((item) => (
-              <NavLink key={item.href} active={isRouteActive(pathname, item.href)} href={item.href}>
+              <NavLink
+                key={item.href}
+                active={isRouteActive(pathname, item.href)}
+                href={item.href}
+                className="text-[15px] font-semibold text-[#4b5563] transition hover:text-primary-600"
+              >
                 {item.label}
               </NavLink>
             ))}
           </div>
         </div>
 
-        <div className="ml-auto flex shrink-0 items-center gap-2">
-          <IconButton href="/saved" icon={<HeartIcon className="text-red-500" />} label="Хадгалсан машинууд" />
+        <div className="ml-auto flex shrink-0 items-center gap-5">
+          <NavbarThemePicker />
 
-          <Button href="/post" size="sm" variant="white">
-            Зар оруулах
+          <Button
+            href="/saved"
+            variant="outline-white"
+            size="sm"
+            aria-label="Хадгалсан машинууд"
+          >
+            <HeartIcon />
+          </Button>
+
+          <Button
+            href="/post"
+            size="sm"
+            variant="outline-white"
+            aria-label="Зар оруулах"            
+          >
+            <CirclePlus />
           </Button>
 
           {showAuthenticatedActions ? (
             <>
-              <IconButton href="/notifications" icon={<BellIcon className="text-yellow-500" />} label="Мэдэгдлүүд" />
-              <IconButton href="/profile" icon={<UserIcon className="text-primary-500" />} label="Миний профайл" />
+              <Button
+                href="/notifications"
+                variant="outline-white"
+                size="sm"
+                aria-label="Мэдэгдлүүд"
+              >
+                <BellIcon />
+              </Button>
+
+              <Button
+                href="/profile"
+                variant="outline-white"
+                size="sm"
+                aria-label="Миний профайл"
+              >
+                <UserIcon />
+              </Button>
             </>
           ) : (
-            <Button href="/auth" size="sm" variant="white">
-              Нэвтрэх
-            </Button>
+          <Button
+            href="/auth"
+            size="sm"
+            variant="primary"
+            aria-label="Зар оруулах"
+            className="!rounded-full !h-12 !w-12 !p-0"
+          >
+            <LogInIcon  />
+          </Button>
           )}
-
-          <NavbarThemePicker />
         </div>
       </div>
     </nav>
