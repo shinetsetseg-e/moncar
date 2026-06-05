@@ -1,5 +1,5 @@
+import Button from "@/shared/components/form/Button";
 import { CircleDollarSign, ShieldCheck } from "lucide-react";
-import Button from "@/components/ui/Button";
 
 export default function PromoBanners() {
   return (

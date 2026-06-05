@@ -1,46 +1,40 @@
 import { Form } from "antd";
 import { CarPlaceholderIcon } from "@/components/icons";
 import ProfileSidebar from "@/components/profile/ProfileSidebar";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import { Badge, Button, FormField, Input, InfoCard, PageHeader } from "@/shared/components";
 
 export default function ProfilePage() {
   return (
     <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-7 px-4 py-8 md:grid-cols-[240px_1fr] md:px-8">
       <ProfileSidebar />
       <div className="flex flex-col gap-5">
-        <div className="rounded-xl border border-gray-200 bg-white p-6">
-          <div className="mb-5 border-b border-gray-100 pb-4 text-base font-bold text-gray-900">Хувийн мэдээлэл</div>
+        <PageHeader title="Миний профайл" subtitle="Хувийн мэдээлэл болон зарын төлөвөө эндээс удирдана." className="mb-0" />
+
+        <InfoCard className="p-6" title="Хувийн мэдээлэл">
           <Form component="div" className="contents">
             <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нэр</label>
+              <FormField label="Нэр">
                 <Input defaultValue="Батбаяр" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Овог</label>
+              </FormField>
+              <FormField label="Овог">
                 <Input defaultValue="Дорж" />
-              </div>
+              </FormField>
             </div>
             <div className="mb-2 grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
+              <FormField label="Утасны дугаар">
                 <Input defaultValue="+976 9900 0000" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">И-мэйл</label>
+              </FormField>
+              <FormField label="И-мэйл">
                 <Input defaultValue="batbayar@mail.mn" />
-              </div>
+              </FormField>
             </div>
             <div className="mt-2 flex justify-end">
               <Button>Хадгалах</Button>
             </div>
           </Form>
-        </div>
+        </InfoCard>
 
-        <div className="rounded-xl border border-gray-200 bg-white p-6">
-          <div className="mb-5 border-b border-gray-100 pb-4 text-base font-bold text-gray-900">Миний зарууд</div>
+        <InfoCard className="p-6" title="Миний зарууд">
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-3 rounded-lg border border-gray-200 p-3">
               <div className="flex h-[52px] w-[72px] shrink-0 items-center justify-center rounded-md bg-gray-100">
@@ -51,7 +45,7 @@ export default function ProfilePage() {
                 <div className="text-xs text-gray-500">₮28,500,000</div>
               </div>
               <Badge variant="new">Нийтлэгдсэн</Badge>
-              <Button href="/premium" variant="ghost" size="sm">
+              <Button href="/premium" size="sm" variant="ghost">
                 Premium болгох
               </Button>
             </div>
@@ -64,12 +58,12 @@ export default function ProfilePage() {
                 <div className="text-xs text-gray-500">₮22,000,000</div>
               </div>
               <Badge variant="hot">Хянагдаж байна</Badge>
-              <Button variant="ghost" size="sm" disabled>
+              <Button disabled size="sm" variant="ghost">
                 Premium болгох
               </Button>
             </div>
           </div>
-        </div>
+        </InfoCard>
       </div>
     </div>
   );

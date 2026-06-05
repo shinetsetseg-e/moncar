@@ -1,5 +1,5 @@
+import { Card } from "antd";
 import type { ReactNode } from "react";
-import Card from "@/components/ui/Card";
 
 interface Props {
   title: ReactNode;

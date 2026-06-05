@@ -5,7 +5,12 @@ export type BadgeVariant =
   | "green"
   | "new"
   | "hot"
-  | "verified";
+  | "verified"
+  | "success"
+  | "warning"
+  | "error"
+  | "info"
+  | "pending";
 
 export interface ListingBadge {
   label: string;

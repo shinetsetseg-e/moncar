@@ -4,6 +4,7 @@ export const navbarLinks: NavItem[] = [
   { href: "/", label: "Нүүр" },
   { href: "/marketplace", label: "Marketplace" },
   { href: "/services", label: "Үйлчилгээ" },
+  { href: "/design-components", label: "Design Components" },
 ];
 
 export const footerColumns: FooterColumn[] = [

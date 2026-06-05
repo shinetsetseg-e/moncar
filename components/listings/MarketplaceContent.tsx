@@ -1,36 +1,39 @@
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { GridIcon, ListIcon } from "@/components/icons";
 import { searchListings } from "@/data/listings";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
-import FilterSidebar from "@/components/listings/FilterSidebar";
-import ListingCard from "@/components/listings/ListingCard";
-import Select from "@/components/ui/Select";
+import { Badge, Button, ListingCard, Select } from "@/shared/components";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import FilterSidebar from "./FilterSidebar";
 
 export default function MarketplaceContent() {
   return (
     <div className="mx-auto grid max-w-[1280px] gap-7 bg-gray-50 px-4 py-8 lg:grid-cols-[260px_1fr] md:px-8">
       <FilterSidebar />
       <div>
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Marketplace</h1>
-          <p className="mt-1 text-sm text-gray-500">Moncar marketplace дээрх автомашины зарууд</p>
-        </div>
-
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div className="text-[15px] text-gray-600">
             <strong className="font-bold text-gray-900">2,840</strong> үр дүн олдлоо
           </div>
           <div className="flex items-center gap-2.5">
-            <div className="flex overflow-hidden rounded-lg border-[1.5px] border-gray-300">
-              <Button className="!rounded-none !bg-primary-600 !px-3 !py-[7px] !text-white" type="button">
+            <div className="flex rounded-full border border-gray-200 bg-white p-1 shadow-sm">
+              <Button
+                className="!h-9 !rounded-full !px-3 !py-0 !shadow-sm"
+                type="button"
+                variant="primary"
+                aria-label="Grid view"
+              >
                 <GridIcon />
               </Button>
-              <Button className="!rounded-none !bg-white !px-3 !py-[7px] !text-gray-500" type="button" variant="ghost">
+
+              <Button
+                className="!h-9 !rounded-full !bg-transparent !px-3 !py-0 !text-gray-500 hover:!bg-gray-100 hover:!text-gray-900"
+                type="button"
+                variant="ghost"
+                aria-label="List view"
+              >
                 <ListIcon />
               </Button>
             </div>
-            <Select className="min-w-[180px]" uiVariant="compact">
+            <Select uiVariant="compact">
               <option>Шинээр нэмэгдсэн</option>
               <option>Үнэ (бага → их)</option>
               <option>Үнэ (их → бага)</option>

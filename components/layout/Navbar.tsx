@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BellIcon, HeartIcon, UserIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
-import Button from "@/components/ui/Button";
 import { navbarLinks } from "@/data/navigation";
 import { isRouteActive } from "@/lib/utils";
+import { Button, IconButton, NavLink } from "@/shared/components";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -21,43 +21,26 @@ export default function Navbar() {
             MONCAR
           </Link>
           <div className="hidden items-center gap-1 md:flex">
-            {navbarLinks.map((item) => {
-              const active = isRouteActive(pathname, item.href);
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={[
-                    "whitespace-nowrap rounded-md px-[10px] py-1.5 text-sm font-medium transition-[color,background]",
-                    active ? "font-semibold text-primary-600" : "text-gray-600 hover:bg-primary-50 hover:text-primary-600",
-                  ].join(" ")}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+            {navbarLinks.map((item) => (
+              <NavLink key={item.href} active={isRouteActive(pathname, item.href)} href={item.href}>
+                {item.label}
+              </NavLink>
+            ))}
           </div>
         </div>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          <Button href="/saved" variant="white" size="sm" aria-label="Хадгалсан машинууд">
-            <HeartIcon className="text-red-500" />
-          </Button>
-          <Button variant="white" href="/post" size="sm">
-            Зар нэмэх
+          <IconButton href="/saved" icon={<HeartIcon className="text-red-500" />} label="Хадгалсан машинууд" />
+          <Button href="/post" size="sm" variant="white">
+            Зар оруулах
           </Button>
           {showAuthenticatedActions ? (
             <>
-              <Button href="/notifications" variant="white" size="sm" aria-label="Мэдэгдлүүд">
-                <BellIcon className="text-yellow-500" />
-              </Button>
-              <Button href="/profile" variant="white" size="sm" aria-label="Миний профайл">
-                <UserIcon className="text-primary-500" />
-              </Button>
+              <IconButton href="/notifications" icon={<BellIcon className="text-yellow-500" />} label="Мэдэгдлүүд" />
+              <IconButton href="/profile" icon={<UserIcon className="text-primary-500" />} label="Миний профайл" />
             </>
           ) : (
-            <Button href="/auth" variant="white" size="sm">
+            <Button href="/auth" size="sm" variant="white">
               Нэвтрэх
             </Button>
           )}

@@ -1,12 +1,12 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+import { Button as AntButton } from "antd";
 import { useRouter } from "next/navigation";
 import type { ButtonHTMLAttributes, MouseEvent, ReactNode } from "react";
-import { Button as AntButton } from "antd";
-import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "white" | "outline-white";
-type ButtonSize = "sm" | "md" | "lg";
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "white" | "outline-white";
+export type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "!bg-primary-600 !text-white hover:!bg-primary-700 active:!bg-primary-800",
@@ -33,7 +33,7 @@ interface SharedProps {
   loading?: boolean;
 }
 
-type Props = SharedProps &
+export type ButtonProps = SharedProps &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color" | "type"> & {
     type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   };
@@ -50,7 +50,7 @@ export default function Button({
   onClick,
   type,
   ...props
-}: Props) {
+}: ButtonProps) {
   const router = useRouter();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -68,7 +68,7 @@ export default function Button({
       autoInsertSpace={false}
       block={fullWidth}
       className={cn(
-        "!inline-flex !items-center !justify-center !gap-1.5 !rounded-lg !border-0 !font-semibold !shadow-none !transition-all !duration-150",
+        "!inline-flex !items-center !justify-center !gap-1.5 !rounded-2xl !border-0 !font-semibold !shadow-none !transition-all !duration-150",
         sizeClasses[size],
         variantClasses[variant],
         disabled && "!border-gray-300 !bg-gray-300 !text-gray-400 hover:!bg-gray-300 hover:!text-gray-400",

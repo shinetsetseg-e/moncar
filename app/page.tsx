@@ -1,12 +1,10 @@
 import { ArrowRight } from "lucide-react";
-import { featuredListings } from "@/data/listings";
 import BrandGrid from "@/components/home/BrandGrid";
 import Hero from "@/components/home/Hero";
 import PromoBanners from "@/components/home/PromoBanners";
 import Footer from "@/components/layout/Footer";
-import ListingCard from "@/components/listings/ListingCard";
-import Button from "@/components/ui/Button";
-import SectionHeader from "@/components/ui/SectionHeader";
+import { featuredListings } from "@/data/listings";
+import { Button, ListingCard, SectionHeader } from "@/shared/components";
 
 export default function HomePage() {
   return (
@@ -16,14 +14,14 @@ export default function HomePage() {
       <section className="px-4 py-10 md:px-8 md:py-[72px]">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader
-            label="Premium зарууд"
-            title="Онцлох машинууд"
             action={
               <Button href="/marketplace" variant="ghost">
                 Бүгдийг үзэх
                 <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
               </Button>
             }
+            label="Premium зарууд"
+            title="Онцлох машинууд"
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {featuredListings.map((listing) => (

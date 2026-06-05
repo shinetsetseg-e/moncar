@@ -10,15 +10,20 @@ const variantClasses: Record<BadgeVariant, string> = {
   new: "bg-green-bg text-green-active",
   hot: "bg-orange-bg text-orange-warning",
   verified: "bg-primary-50 text-primary-700",
+  success: "border border-green-active/15 bg-green-bg text-green-active",
+  warning: "border border-orange-warning/20 bg-orange-bg text-orange-warning",
+  error: "border border-red-danger/15 bg-red-bg text-red-danger",
+  info: "border border-primary-200 bg-primary-50 text-primary-700",
+  pending: "border border-gray-200 bg-gray-100 text-gray-600",
 };
 
-interface Props {
+export interface BadgeProps {
   children: ReactNode;
   variant: BadgeVariant;
   className?: string;
 }
 
-export default function Badge({ children, variant, className }: Props) {
+export default function Badge({ children, variant, className }: BadgeProps) {
   return (
     <span
       className={cn(

@@ -1,10 +1,8 @@
+import { Form } from "antd";
 import { CreditCard } from "lucide-react";
-import { Checkbox, Form } from "antd";
 import { CarPlaceholderIcon } from "@/components/icons";
 import { getListingById } from "@/data/listings";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
-import Select from "@/components/ui/Select";
+import { Button, Checkbox, FormField, PageHeader, Select, StatusChip, Input } from "@/shared/components";
 
 interface LoanPageProps {
   searchParams?: Promise<{
@@ -18,10 +16,7 @@ export default async function LoanPage({ searchParams }: LoanPageProps) {
 
   return (
     <div className="mx-auto max-w-[640px] px-4 py-8 md:px-8">
-      <div className="mb-2">
-        <span className="text-xs font-bold uppercase tracking-[1.5px] text-primary-600">IIC зээл</span>
-      </div>
-      <h1 className="mb-6 text-2xl font-bold">Зээлийн хүсэлт илгээх</h1>
+      <PageHeader label="IIC зээл" title="Зээлийн хүсэлт илгээх" />
 
       {listing ? (
         <div className="mb-6 flex items-center gap-4 rounded-[10px] border border-primary-200 bg-primary-50 p-4">
@@ -40,61 +35,59 @@ export default async function LoanPage({ searchParams }: LoanPageProps) {
       <Form component="div" className="flex flex-col gap-[14px] rounded-xl border border-gray-200 bg-white p-6">
         <div className="border-b border-gray-100 pb-3 text-base font-bold text-gray-900">Хувийн мэдээлэл</div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нэр *</label>
+          <FormField label="Нэр" required>
             <Input placeholder="Овог Нэр" />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар *</label>
+          </FormField>
+          <FormField label="Утасны дугаар" required>
             <Input placeholder="9900 0000" />
-          </div>
+          </FormField>
         </div>
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">И-мэйл</label>
-          <Input type="email" placeholder="name@email.com" />
-        </div>
+        <FormField label="И-мэйл">
+          <Input placeholder="name@email.com" type="email" />
+        </FormField>
 
         <div className="border-b border-gray-100 pb-3 pt-1 text-base font-bold text-gray-900">Зээлийн мэдээлэл</div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Зээлийн дүн *</label>
+          <FormField label="Зээлийн дүн" required>
             <Input placeholder="₮80,000,000" />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Урьдчилгаа *</label>
+          </FormField>
+          <FormField label="Урьдчилгаа" required>
             <Input placeholder="₮15,000,000" />
-          </div>
+          </FormField>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Ажил эрхлэлт</label>
+          <FormField label="Ажил эрхлэлт">
             <Select>
               <option>Байнгын ажилтан</option>
               <option>Хувиараа хөдөлмөр эрхлэгч</option>
               <option>Бизнес эрхлэгч</option>
             </Select>
-          </div>
-          <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Сарын орлого</label>
+          </FormField>
+          <FormField label="Сарын орлого">
             <Input placeholder="₮2,500,000" />
-          </div>
+          </FormField>
         </div>
-        <Checkbox className="!items-start !text-sm !text-gray-600" defaultChecked>
+
+        <Checkbox defaultChecked className="!items-start !text-sm !text-gray-600">
           Би мэдээлэл дамжуулахыг зөвшөөрч байна. IIC банк болон Moncar платформ мэдээллийг зөвхөн зээлийн хүсэлт боловсруулахад ашиглана.
         </Checkbox>
+
         <div className="mt-1 grid grid-cols-2 gap-2 rounded-lg bg-gray-50 p-3 md:grid-cols-4">
           {[
-            { label: "ИЛГЭЭГДСЭН", classes: "bg-primary-50 border-[1.5px] border-primary-200 text-primary-600" },
-            { label: "ШАЛГАЖ БАЙНА", classes: "bg-orange-bg text-orange-warning" },
-            { label: "БАТЛАГДСАН", classes: "bg-green-bg text-green-active" },
-            { label: "ТАТГАЛЗСАН", classes: "bg-red-bg text-red-danger" },
+            { label: "ИЛГЭЭГДСЭН", variant: "info" as const },
+            { label: "ШАЛГАЖ БАЙНА", variant: "warning" as const },
+            { label: "БАТЛАГДСАН", variant: "success" as const },
+            { label: "ТАТГАЛЗСАН", variant: "error" as const },
           ].map((item) => (
-            <div key={item.label} className={`rounded-lg p-2 text-center ${item.classes}`}>
-              <div className="text-[11px] font-bold">{item.label}</div>
+            <div key={item.label} className="flex justify-center">
+              <StatusChip className="px-3 py-2" variant={item.variant}>
+                {item.label}
+              </StatusChip>
             </div>
           ))}
         </div>
-        <Button size="lg" fullWidth className="mt-1">
+
+        <Button className="mt-1" fullWidth size="lg">
           <CreditCard className="h-4 w-4" strokeWidth={2.2} />
           Хүсэлт илгээх
         </Button>

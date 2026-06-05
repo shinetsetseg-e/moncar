@@ -1,9 +1,9 @@
 "use client";
 
-import { Children, isValidElement, useMemo } from "react";
-import type { ChangeEvent, ReactNode, SelectHTMLAttributes } from "react";
 import { Select as AntSelect } from "antd";
 import type { SelectProps as AntSelectProps } from "antd";
+import { Children, isValidElement, useMemo } from "react";
+import type { ChangeEvent, ReactNode, SelectHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 type SelectVariant = "default" | "compact" | "hero";
@@ -15,7 +15,7 @@ interface SelectOption {
   value: OptionValue;
 }
 
-interface Props extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "size"> {
+export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "size"> {
   className?: string;
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
   uiVariant?: SelectVariant;
@@ -63,7 +63,7 @@ export default function Select({
   value,
   uiVariant = "default",
   ...props
-}: Props) {
+}: SelectProps) {
   const options = useMemo(() => getOptions(children), [children]);
 
   const fallbackValue = options.find((option) => !option.disabled)?.value;
@@ -95,7 +95,10 @@ export default function Select({
       aria-labelledby={props["aria-labelledby"]}
       className={cn("w-full", uiVariant === "hero" && "h-12", className)}
       classNames={{
-        content: cn(uiVariant === "hero" ? "text-sm font-semibold text-gray-800" : "text-sm text-gray-900", uiVariant === "compact" && "text-[13px] text-gray-700"),
+        content: cn(
+          uiVariant === "hero" ? "text-sm font-semibold text-gray-800" : "text-sm text-gray-900",
+          uiVariant === "compact" && "text-[13px] text-gray-700",
+        ),
         placeholder: uiVariant === "hero" ? "text-sm font-semibold text-gray-800" : "text-sm text-gray-400",
         root: cn(
           uiVariant === "default" && "rounded-lg",

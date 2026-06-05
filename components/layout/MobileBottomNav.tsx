@@ -1,11 +1,11 @@
 "use client";
 
 import { House, Plus } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { HeartIcon, SearchIcon, UserIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { isRouteActive } from "@/lib/utils";
+import { MobileNavItem } from "@/shared/components";
+import { usePathname } from "next/navigation";
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
@@ -39,16 +39,7 @@ export default function MobileBottomNav() {
               <UserIcon className="h-[22px] w-[22px]" />
             );
 
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex flex-col items-center gap-[3px] px-2 py-1 text-[11px] font-medium ${active ? "text-primary-600" : "text-gray-400"}`}
-            >
-              {icon}
-              {item.label}
-            </Link>
-          );
+          return <MobileNavItem key={item.href} active={active} href={item.href} icon={icon} label={item.label} />;
         })}
       </div>
     </div>

@@ -1,7 +1,4 @@
-import { Checkbox, Radio } from "antd";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
-import Select from "@/components/ui/Select";
+import { Button, Checkbox, FormField, Input, Radio, Select } from "@/shared/components";
 
 export default function FilterSidebar() {
   return (
@@ -49,20 +46,21 @@ export default function FilterSidebar() {
       </div>
 
       <div className="mb-5 border-b border-gray-100 pb-5">
-        <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Байршил</div>
-        <Select>
-          <option>Бүх байршил</option>
-          <option>Улаанбаатар</option>
-          <option>Дархан</option>
-          <option>Эрдэнэт</option>
-        </Select>
+        <FormField label="Байршил" labelClassName="mb-1.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">
+          <Select>
+            <option>Бүх байршил</option>
+            <option>Улаанбаатар</option>
+            <option>Дархан</option>
+            <option>Эрдэнэт</option>
+          </Select>
+        </FormField>
       </div>
 
       <div className="mb-5">
         <div className="mb-2.5 text-xs font-bold uppercase tracking-[0.8px] text-gray-500">Нөхцөл</div>
         <div className="flex flex-col gap-2">
           {["Бүгд", "Шинэ", "Хэрэглэсэн"].map((label) => (
-            <Radio key={label} className="!text-sm !text-gray-700" defaultChecked={label === "Хэрэглэсэн"} name="cond">
+            <Radio key={label} defaultChecked={label === "Хэрэглэсэн"} name="condition">
               {label}
             </Radio>
           ))}

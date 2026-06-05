@@ -1,8 +1,8 @@
-import { Search } from "lucide-react";
 import { SearchIcon } from "@/components/icons";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
-import Select from "@/components/ui/Select";
+import Button from "@/shared/components/form/Button";
+import Input from "@/shared/components/form/Input";
+import Select from "@/shared/components/form/Select";
+import { Search } from "lucide-react";
 
 export default function SearchCard() {
   return (

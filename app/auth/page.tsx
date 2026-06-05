@@ -1,14 +1,12 @@
 "use client";
 
-import { ChevronLeft, Lock, Smartphone } from "lucide-react";
 import { Button as AntButton, Form } from "antd";
+import { ChevronLeft, Lock, Smartphone } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import AuthCard from "@/components/auth/AuthCard";
-import { CheckIcon } from "@/components/icons";
 import { useAuth } from "@/components/providers/AuthProvider";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import { Button, FormField, Input } from "@/shared/components";
 
 type AuthState = "login" | "register" | "otp" | "forgot" | "success";
 
@@ -51,14 +49,12 @@ export default function AuthPage() {
         {state === "login" ? (
           <AuthCard title="MONCAR" subtitle="Тавтай морилно уу! Нэвтэрч орно уу.">
             <Form component="div" className="flex flex-col gap-4">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
-                <Input type="tel" placeholder="9900 0000" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нууц үг</label>
-                <Input type="password" placeholder="••••••••" />
-              </div>
+              <FormField label="Утасны дугаар">
+                <Input placeholder="9900 0000" type="tel" />
+              </FormField>
+              <FormField label="Нууц үг">
+                <Input placeholder="••••••••" type="password" />
+              </FormField>
               <div className="text-right">
                 <AntButton className="!h-auto !p-0 !text-[13px] !text-primary-600 !shadow-none hover:!text-primary-700" onClick={() => setState("forgot")} type="link">
                   Нууц үг мартсан?
@@ -76,7 +72,7 @@ export default function AuthPage() {
               <div className="flex items-center gap-3 text-[13px] text-gray-400 before:h-px before:flex-1 before:bg-gray-200 after:h-px after:flex-1 after:bg-gray-200">
                 эсвэл
               </div>
-              <Button variant="ghost" fullWidth onClick={() => setState("register")}>
+              <Button fullWidth variant="ghost" onClick={() => setState("register")}>
                 Бүртгүүлэх
               </Button>
             </Form>
@@ -86,29 +82,30 @@ export default function AuthPage() {
         {state === "register" ? (
           <AuthCard title="MONCAR" subtitle="Шинэ бүртгэл үүсгэх">
             <Form component="div" className="flex flex-col gap-4">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
+              <FormField label="Утасны дугаар">
                 <Input placeholder="9900 0000" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нууц үг</label>
-                <Input type="password" placeholder="••••••••" />
-                <div className="mt-[-4px] flex items-start gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 text-xs text-gray-500">
-                  <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={2.2} />
-                  <span>Нууц үг 8–25 тэмдэгттэй, латин үсэг, тоо, тусгай тэмдэгт агуулсан байна.</span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Нууц үг давтах</label>
-                <Input type="password" placeholder="••••••••" />
-              </div>
+              </FormField>
+              <FormField
+                label="Нууц үг"
+                hint={
+                  <span className="inline-flex items-start gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 text-xs text-gray-500">
+                    <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={2.2} />
+                    <span>Нууц үг 8-25 тэмдэгттэй, латин үсэг, тоо, тусгай тэмдэгт агуулсан байна.</span>
+                  </span>
+                }
+              >
+                <Input placeholder="••••••••" type="password" />
+              </FormField>
+              <FormField label="Нууц үг давтах">
+                <Input placeholder="••••••••" type="password" />
+              </FormField>
               <Button fullWidth onClick={() => setState("otp")}>
                 OTP илгээх
               </Button>
               <div className="flex items-center gap-3 text-[13px] text-gray-400 before:h-px before:flex-1 before:bg-gray-200 after:h-px after:flex-1 after:bg-gray-200">
                 эсвэл
               </div>
-              <Button variant="ghost" fullWidth onClick={() => setState("login")}>
+              <Button fullWidth variant="ghost" onClick={() => setState("login")}>
                 Нэвтрэх
               </Button>
             </Form>
@@ -130,6 +127,8 @@ export default function AuthPage() {
                 {otp.map((value, index) => (
                   <Input
                     key={index}
+                    id={`otp-${index}`}
+                    className="h-14 w-[52px] rounded-lg border-2 text-center text-[22px] font-bold"
                     maxLength={1}
                     value={value}
                     onChange={(event) => {
@@ -137,18 +136,14 @@ export default function AuthPage() {
                       next[index] = event.target.value.slice(-1);
                       setOtp(next);
                       if (event.target.value && index < 5) {
-                        const nextInput = document.getElementById(`otp-${index + 1}`);
-                        nextInput?.focus();
+                        document.getElementById(`otp-${index + 1}`)?.focus();
                       }
                     }}
                     onKeyDown={(event) => {
                       if (event.key === "Backspace" && !otp[index] && index > 0) {
-                        const prevInput = document.getElementById(`otp-${index - 1}`);
-                        prevInput?.focus();
+                        document.getElementById(`otp-${index - 1}`)?.focus();
                       }
                     }}
-                    id={`otp-${index}`}
-                    className="h-14 w-[52px] rounded-lg border-2 text-center text-[22px] font-bold"
                   />
                 ))}
               </div>
@@ -168,14 +163,13 @@ export default function AuthPage() {
         {state === "forgot" ? (
           <AuthCard title="MONCAR" subtitle="Утасны дугаараа оруулна уу">
             <Form component="div" className="flex flex-col gap-4">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs font-semibold tracking-[0.3px] text-gray-600">Утасны дугаар</label>
+              <FormField label="Утасны дугаар">
                 <Input placeholder="9900 0000" />
-              </div>
+              </FormField>
               <Button fullWidth onClick={() => setState("otp")}>
                 OTP илгээх
               </Button>
-              <Button variant="ghost" fullWidth onClick={() => setState("login")}>
+              <Button fullWidth variant="ghost" onClick={() => setState("login")}>
                 <ChevronLeft className="h-4 w-4" strokeWidth={2.2} />
                 Буцах
               </Button>
@@ -184,11 +178,8 @@ export default function AuthPage() {
         ) : null}
 
         {state === "success" ? (
-          <AuthCard title="Амжилттай!" subtitle="Та амжилттай нэвтэрлээ." center titleClassName="text-green-active">
+          <AuthCard center subtitle="Та амжилттай нэвтэрлээ." title="Амжилттай!" titleClassName="text-green-active">
             <div className="pb-5 pt-1">
-              <div className="mx-auto mb-4 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-green-bg">
-                <CheckIcon className="h-8 w-8 stroke-green-active" />
-              </div>
               <Button
                 fullWidth
                 className="mt-4"

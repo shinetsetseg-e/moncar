@@ -1,5 +1,13 @@
 "use client";
 
+import ListingGallery from "@/components/listings/ListingGallery";
+import SpecsGrid from "@/components/listings/SpecsGrid";
+import Modal from "@/shared/components/dialogs/Modal";
+import Button from "@/shared/components/form/Button";
+import Select from "@/shared/components/form/Select";
+import Textarea from "@/shared/components/form/Textarea";
+import Badge from "@/shared/components/status/Badge";
+import type { Listing } from "@/types";
 import {
   ArrowUpRight,
   BarChart3,
@@ -17,14 +25,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import type { Listing } from "@/types";
-import ListingGallery from "@/components/listings/ListingGallery";
-import SpecsGrid from "@/components/listings/SpecsGrid";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
-import Modal from "@/components/ui/Modal";
-import Select from "@/components/ui/Select";
-import Textarea from "@/components/ui/Textarea";
 
 interface Props {
   listing: Listing;

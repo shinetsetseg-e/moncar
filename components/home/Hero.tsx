@@ -49,6 +49,8 @@ export default function Hero() {
   const handleSearch = () => {
     console.log({
       brand,
+      listings,
+      loans,
       model,
       minPrice: priceRange[0],
       maxPrice: priceRange[1],

@@ -1,7 +1,6 @@
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
 import { CarPlaceholderIcon } from "@/components/icons";
 import { savedListings } from "@/data/listings";
+import { Badge, Button, PageHeader } from "@/shared/components";
 
 interface ComparePageProps {
   searchParams?: Promise<{
@@ -12,10 +11,7 @@ interface ComparePageProps {
 export default async function ComparePage({ searchParams }: ComparePageProps) {
   const resolvedSearchParams = await searchParams;
   const requestedIds = resolvedSearchParams?.ids?.split(",").filter(Boolean) ?? [];
-  const compareListings = (requestedIds.length > 0
-    ? savedListings.filter((listing) => requestedIds.includes(listing.id))
-    : savedListings.slice(0, 3)
-  ).slice(0, 3);
+  const compareListings = (requestedIds.length > 0 ? savedListings.filter((listing) => requestedIds.includes(listing.id)) : savedListings.slice(0, 3)).slice(0, 3);
 
   const compareRows = [
     { label: "Он", values: compareListings.map((listing) => listing.year) },
@@ -29,10 +25,7 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
 
   return (
     <div className="mx-auto max-w-[1280px] overflow-x-auto px-4 py-8 md:px-8">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold">Машин харьцуулах</h1>
-        <p className="mt-1 text-sm text-gray-500">Хадгалсан машинаас сонгосон заруудыг зэрэгцүүлэн харьцуулна.</p>
-      </div>
+      <PageHeader title="Машин харьцуулах" subtitle="Хадгалсан машинаас сонгосон заруудыг зэрэгцүүлэн харьцуулна." />
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[900px] overflow-hidden rounded-xl border border-gray-200 bg-white">
@@ -72,11 +65,11 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
                       Дэлгэрэнгүй
                     </Button>
                     {listing.loanEligible ? (
-                      <Button href={`/loan?listing=${listing.id}`} variant="secondary" size="sm">
+                      <Button href={`/loan?listing=${listing.id}`} size="sm" variant="secondary">
                         Зээлийн хүсэлт
                       </Button>
                     ) : (
-                      <Button variant="ghost" size="sm" disabled>
+                      <Button disabled size="sm" variant="ghost">
                         Зээл боломжгүй
                       </Button>
                     )}
