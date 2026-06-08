@@ -17,6 +17,7 @@ import {
   ListingCard,
   ListingCardActions,
   ListingMeta,
+  LoanCalculator,
   MobileNavItem,
   NavLink,
   PageHeader,
@@ -216,6 +217,13 @@ export default function DesignComponentsPage() {
                 <SummaryRow label="Шилжилт" value={<ChevronRight className="h-4 w-4 text-gray-400" />} />
               </div>
             </InfoCard>
+          </div>
+          <div className="mt-5 grid gap-5 lg:grid-cols-2">
+            <LoanCalculator
+              basePrice={listing.price}
+              loanRequestHref={`/loan?listing=${listing.id}`}
+              onBuyNow={() => setConfirmOpen(true)}
+            />
           </div>
         </section>
 

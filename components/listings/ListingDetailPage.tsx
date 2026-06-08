@@ -2,11 +2,12 @@
 
 import ListingGallery from "@/components/listings/ListingGallery";
 import SpecsGrid from "@/components/listings/SpecsGrid";
-import Badge from "@/shared/status/Badge";
+import LoanCalculator from "@/shared/data-display/LoanCalculator";
 import Modal from "@/shared/dialogs/Modal";
 import Button from "@/shared/form/Button";
 import Select from "@/shared/form/Select";
 import Textarea from "@/shared/form/Textarea";
+import Badge from "@/shared/status/Badge";
 import type { Listing } from "@/types";
 import {
   ArrowUpRight,
@@ -21,7 +22,7 @@ import {
   ShieldCheck,
   Star,
   TriangleAlert,
-  Upload,
+  Upload
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -32,6 +33,7 @@ interface Props {
 
 export default function ListingDetailPage({ listing }: Props) {
   const [open, setOpen] = useState(false);
+  const loanRequestHref = `/loan?listing=${listing.id}`;
 
   return (
     <>
@@ -130,50 +132,113 @@ export default function ListingDetailPage({ listing }: Props) {
             </div>
           </div>
 
-          <div>
-            <div className="rounded-xl border border-gray-200 bg-white p-5 sm:p-6 lg:sticky lg:top-20">
-              <div className="mb-1 text-[26px] font-bold text-primary-600">{listing.price}</div>
-              <div className="mb-5 text-[13px] text-gray-500">
-                {listing.title} · {listing.year} · {listing.mileage}
+          <div className="lg:sticky lg:top-16 flex flex-col gap-6">
+            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
+              <div className="mb-5">
+                <div
+                  id="listing-purchase-actions"
+                  className="mt-1 text-[28px] font-extrabold tracking-tight text-primary-600"
+                >
+                  {listing.price}
+                </div>
+
+                <div className="mt-2 text-[13px] leading-5 text-gray-500">
+                  {listing.title} · {listing.year} · {listing.mileage}
+                </div>
               </div>
-              <div className="flex flex-col gap-2.5">
+
+              <div className="space-y-2.5">
                 <Button size="lg" fullWidth>
                   <Phone className="h-4 w-4" strokeWidth={2.2} />
                   Утас харах / Залгах
                 </Button>
-                <Button href={`/loan?listing=${listing.id}`} variant="secondary" fullWidth>
-                  <CreditCard className="h-4 w-4" strokeWidth={2.2} />
-                  Зээлийн хүсэлт илгээх
-                </Button>
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+
+                <div className="grid grid-cols-2 gap-2">
                   <Button variant="ghost">
                     <Heart className="h-4 w-4" strokeWidth={2.2} />
                     Хадгалах
                   </Button>
+
                   <Button variant="ghost">
                     <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
-                    Share
+                    Хуваалцах
                   </Button>
                 </div>
-                <Button variant="ghost" className="border-red-danger text-red-danger hover:bg-red-bg hover:text-red-danger" onClick={() => setOpen(true)}>
+
+                <Button
+                  variant="ghost"
+                  className="w-full border-gray-200 text-gray-600 hover:border-red-danger hover:bg-red-bg hover:text-red-danger"
+                  onClick={() => setOpen(true)}
+                >
                   <TriangleAlert className="h-4 w-4" strokeWidth={2.2} />
-                  Гомдол илгээх
+                  Зарын талаар гомдол илгээх
                 </Button>
               </div>
-              <div className="mt-4 text-[13px] text-primary-700">
-                <div className="rounded-lg bg-primary-50 p-3">
-                  <span className="inline-flex items-center gap-1.5">
-                    <ShieldCheck className="h-4 w-4" strokeWidth={2.2} />
-                    <strong>Escrow хамгаалалт</strong>
-                  </span>{" "}
-                  ашиглаад аюулгүй худалдан авалт хийж болно.{" "}
-                  <Link href="/escrow" className="inline-flex items-center gap-1 underline">
-                    Дэлгэрэнгүй
-                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.2} />
-                  </Link>
+
+              <div className="mt-5 border-t border-gray-100 pt-4">
+                <div className="grid gap-3 text-[13px] text-gray-600">
+                  <div className="flex items-center justify-between gap-3">
+                    <span>Зарын төлөв</span>
+                    <span className="font-semibold text-green-600">
+                      Идэвхтэй
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3">
+                    <span>Байршил</span>
+                    <span className="font-semibold text-gray-900">
+                      {listing.location}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3">
+                    <span>Төлбөрийн боломж</span>
+                    <span className="font-semibold text-gray-900">
+                      Бэлэн / Зээл / Escrow
+                    </span>
+                  </div>
+
+                  <div className="mb-5 rounded-xl border border-primary-100 bg-primary-50/70 p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-primary-600 shadow-sm">
+                        <ShieldCheck className="h-5 w-5" strokeWidth={2.2} />
+                      </div>
+
+                      <div>
+                        <div className="text-[14px] font-bold text-gray-900">
+                          Аюулгүй худалдан авалт
+                        </div>
+
+                        <p className="mt-1 text-[13px] leading-5 text-gray-600">
+                          Escrow хамгаалалт ашигласнаар төлбөрийг баталгаатай хадгалж,
+                          худалдан авалтаа эрсдэл багатай хийх боломжтой.
+                        </p>
+
+                        <Link
+                          href="/escrow"
+                          className="mt-2 inline-flex items-center gap-1 text-[13px] font-semibold text-primary-700 hover:underline"
+                        >
+                          Escrow хэрхэн ажилладаг вэ?
+                          <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.2} />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
+            <LoanCalculator
+              basePrice={listing.price}
+              className="mb-4"
+              loanRequestHref={loanRequestHref}
+              onBuyNow={() => {
+                document.getElementById("listing-purchase-actions")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+            />
           </div>
         </div>
       </div>
