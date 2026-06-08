@@ -36,7 +36,7 @@ export default function ListingDetailPage({ listing }: Props) {
   return (
     <>
       <div className="mx-auto max-w-[1280px] px-4 py-7 md:px-8">
-        <div className="mb-6 flex items-center gap-2 text-[13px] text-gray-500">
+        <div className="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-gray-500">
           <Link href="/" className="cursor-pointer">
             Нүүр
           </Link>
@@ -96,7 +96,7 @@ export default function ListingDetailPage({ listing }: Props) {
                 <BarChart3 className="h-4 w-4" strokeWidth={2} />
                 Зах зээлийн статистик
               </h4>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
                   { label: "Хамгийн бага үнэ", value: "₮72,000,000" },
                   { label: "Дундаж үнэ", value: "₮91,500,000" },
@@ -109,7 +109,7 @@ export default function ListingDetailPage({ listing }: Props) {
                 ))}
               </div>
             </div>
-            <div className="mt-4 flex items-center gap-3 rounded-[10px] border border-gray-200 bg-white p-4">
+            <div className="mt-4 flex flex-col items-start gap-3 rounded-[10px] border border-gray-200 bg-white p-4 sm:flex-row sm:items-center">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-100 text-lg font-bold text-primary-600">А</div>
               <div className="flex-1">
                 <div className="text-[15px] font-bold text-gray-900">АвтоМон Дилер</div>
@@ -131,7 +131,7 @@ export default function ListingDetailPage({ listing }: Props) {
           </div>
 
           <div>
-            <div className="sticky top-20 rounded-xl border border-gray-200 bg-white p-6">
+            <div className="rounded-xl border border-gray-200 bg-white p-5 sm:p-6 lg:sticky lg:top-20">
               <div className="mb-1 text-[26px] font-bold text-primary-600">{listing.price}</div>
               <div className="mb-5 text-[13px] text-gray-500">
                 {listing.title} · {listing.year} · {listing.mileage}
@@ -145,7 +145,7 @@ export default function ListingDetailPage({ listing }: Props) {
                   <CreditCard className="h-4 w-4" strokeWidth={2.2} />
                   Зээлийн хүсэлт илгээх
                 </Button>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   <Button variant="ghost">
                     <Heart className="h-4 w-4" strokeWidth={2.2} />
                     Хадгалах

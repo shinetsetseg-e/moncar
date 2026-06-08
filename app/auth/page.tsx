@@ -123,12 +123,12 @@ export default function AuthPage() {
             }
           >
             <Form component="div" className="flex flex-col gap-4">
-              <div className="flex justify-center gap-[10px]">
+              <div className="flex max-w-full justify-center gap-1 sm:gap-[10px]">
                 {otp.map((value, index) => (
                   <Input
                     key={index}
                     id={`otp-${index}`}
-                    className="h-14 w-[52px] rounded-lg border-2 text-center text-[22px] font-bold"
+                    className="h-12 w-9 rounded-lg border-2 text-center text-lg font-bold sm:h-14 sm:w-[52px] sm:text-[22px]"
                     maxLength={1}
                     value={value}
                     onChange={(event) => {

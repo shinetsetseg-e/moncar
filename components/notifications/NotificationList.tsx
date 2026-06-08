@@ -38,7 +38,7 @@ function iconForTone(tone: "primary" | "orange" | "green" | "gray" = "gray") {
 export default function NotificationList() {
   return (
     <>
-      <div className="flex items-center justify-between rounded-t-xl border border-b-0 border-gray-200 bg-white px-5 py-4">
+      <div className="flex flex-col items-start gap-2 rounded-t-xl border border-b-0 border-gray-200 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="text-lg font-bold text-gray-900">Мэдэгдлүүд</div>
           <div className="text-[13px] text-gray-500">3 шинэ мэдэгдэл</div>
@@ -50,7 +50,7 @@ export default function NotificationList() {
           {notifications.map((notification, index) => (
             <div
               key={notification.id}
-              className={`relative flex cursor-pointer gap-3.5 border-b border-gray-100 px-5 py-4 transition-colors last:border-b-0 hover:bg-gray-50 ${
+              className={`relative flex flex-col gap-3.5 border-b border-gray-100 px-5 py-4 transition-colors last:border-b-0 hover:bg-gray-50 sm:flex-row ${
                 notification.unread ? "bg-primary-50" : ""
               } ${index === 0 ? "rounded-t-xl" : ""} ${index === notifications.length - 1 ? "rounded-b-xl" : ""}`}
             >
@@ -62,7 +62,7 @@ export default function NotificationList() {
                 </div>
                 <div className="text-[13px] text-gray-500">{notification.description}</div>
               </div>
-              <div className="mt-0.5 shrink-0 text-[11px] text-gray-400">{notification.time}</div>
+              <div className="self-start text-[11px] text-gray-400 sm:mt-0.5 sm:self-auto">{notification.time}</div>
             </div>
           ))}
         </div>

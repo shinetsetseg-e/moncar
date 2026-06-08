@@ -32,7 +32,7 @@ export default function RootLayout({
           <AntdProvider>
             <AuthProvider>
               <Navbar />
-              <main>{children}</main>
+              <main className="min-w-0 overflow-x-clip pb-24 md:pb-0">{children}</main>
               <MobileBottomNav />
             </AuthProvider>
           </AntdProvider>

@@ -12,7 +12,7 @@ export default function PostPage() {
     <div className="mx-auto max-w-[720px] px-4 py-8 md:px-8">
       <PageHeader label="Зар оруулах" title="Машины зар нэмэх" />
 
-      <div className="mb-8 flex items-center">
+      <div className="mb-8 flex items-center overflow-x-auto pb-2">
         {[
           { label: "Мэдээлэл", active: true, done: true },
           { label: "Техник", active: true, done: false },
@@ -20,7 +20,7 @@ export default function PostPage() {
           { label: "Зураг", active: false, done: false },
           { label: "Preview", active: false, done: false },
         ].map((step, index) => (
-          <div key={step.label} className="relative flex flex-1 flex-col items-center gap-1">
+          <div key={step.label} className="relative flex min-w-[112px] flex-1 flex-col items-center gap-1">
             {index < 4 ? <div className={`absolute left-[calc(50%+14px)] right-[calc(-50%+14px)] top-[14px] h-0.5 ${step.done ? "bg-primary-600" : "bg-gray-200"}`} /> : null}
             <div className={`z-[1] flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold ${step.active ? "bg-primary-600 text-white" : "bg-gray-200 text-gray-500"}`}>
               {step.done ? "✓" : index + 1}
@@ -31,7 +31,7 @@ export default function PostPage() {
       </div>
 
       {!success ? (
-        <Form component="div" className="rounded-xl border border-gray-200 bg-white p-7">
+        <Form component="div" className="rounded-xl border border-gray-200 bg-white p-5 sm:p-7">
           <div className="mb-1.5 text-lg font-bold text-gray-900">Техникийн мэдээлэл</div>
           <div className="mb-6 text-sm text-gray-500">Машины техникийн үзүүлэлтүүдийг үнэн зөвөөр бөглөнө үү.</div>
           <div className="flex flex-col gap-[14px]">
@@ -94,12 +94,12 @@ export default function PostPage() {
               </FormField>
             </div>
           </div>
-          <div className="mt-6 flex items-center justify-between border-t border-gray-200 pt-5">
+          <div className="mt-6 flex flex-col gap-3 border-t border-gray-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
             <Button variant="ghost">
               <ChevronLeft className="h-4 w-4" strokeWidth={2.2} />
               Буцах
             </Button>
-            <div className="flex gap-2.5">
+            <div className="flex flex-col gap-2.5 sm:flex-row">
               <Button variant="ghost">Ноорог хадгалах</Button>
               <Button onClick={() => setSuccess(true)}>
                 Дараах

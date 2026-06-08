@@ -11,7 +11,7 @@ export default function ListingGallery() {
           <Badge variant="loan">Зээлээр авах</Badge>
         </div>
       </div>
-      <div className="mb-6 grid grid-cols-4 gap-2">
+      <div className="mb-6 grid grid-cols-2 gap-2 sm:grid-cols-4">
         {Array.from({ length: 4 }).map((_, index) => (
           <div
             key={index}

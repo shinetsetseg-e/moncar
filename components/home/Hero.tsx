@@ -60,7 +60,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex h-[calc(100vh-64px)] items-center overflow-hidden bg-white px-4 py-12 md:px-8">
+    <section className="relative flex min-h-[calc(100svh-64px)] items-center overflow-hidden bg-white px-4 py-10 md:h-[calc(100vh-64px)] md:px-8 md:py-12">
       <div
         className="absolute inset-0 bg-cover bg-center opacity-70 blur-sm"
         style={{
@@ -72,7 +72,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-white/50" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-        <h1 className="m-0 font-black tracking-[-0.04em] leading-tight text-gray-900 text-4xl md:text-6xl">
+        <h1 className="m-0 text-3xl font-black leading-tight tracking-[-0.04em] text-gray-900 sm:text-4xl md:text-6xl">
           
           <span className="relative ml-2 inline-block text-primary-600">
             Moncar 
@@ -87,8 +87,8 @@ export default function Hero() {
         </p>
 
         <div className="mt-9 w-full max-w-5xl">
-          <div className="mx-auto flex min-h-16 w-full items-center overflow-hidden rounded-full border border-gray-200 bg-white/90 p-3 shadow-lg">
-            <div className="flex flex-1 flex-col px-6 text-left">
+          <div className="mx-auto flex w-full flex-col gap-4 overflow-hidden rounded-[28px] border border-gray-200 bg-white/90 p-3 shadow-lg md:min-h-16 md:flex-row md:items-center md:gap-0 md:rounded-full">
+            <div className="flex w-full flex-1 flex-col px-2 text-left sm:px-4 md:px-6">
               <Select
                 variant="borderless"
                 placeholder="Марк сонгох"
@@ -104,9 +104,9 @@ export default function Hero() {
               />
             </div>
 
-            <div className="h-8 w-px bg-gray-200" />
+            <div className="hidden h-8 w-px bg-gray-200 md:block" />
 
-            <div className="flex flex-1 flex-col px-6 text-left">
+            <div className="flex w-full flex-1 flex-col px-2 text-left sm:px-4 md:px-6">
               <Select
                 variant="borderless"
                 placeholder="Загвар сонгох"
@@ -122,11 +122,11 @@ export default function Hero() {
               />
             </div>
 
-            <div className="h-8 w-px bg-gray-200" />
+            <div className="hidden h-8 w-px bg-gray-200 md:block" />
 
-            <div className="flex flex-[1.4] flex-col px-6 text-left">
-              <div className="flex items-center gap-4">
-                <span className="whitespace-nowrap text-sm font-semibold text-gray-900">
+            <div className="flex w-full flex-[1.4] flex-col px-2 text-left sm:px-4 md:px-6">
+              <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <span className="text-sm font-semibold text-gray-900 sm:whitespace-nowrap">
                   {formatPrice(priceRange[0])} — {formatPrice(priceRange[1])}
                 </span>
 
@@ -146,7 +146,13 @@ export default function Hero() {
             </div>
 
 
-            <Button type="primary" shape="circle" icon={<Search className="h-5 w-5"/>} onClick={handleSearch} className="!h-12 !w-12" />
+            <Button
+              type="primary"
+              shape="circle"
+              icon={<Search className="h-5 w-5" />}
+              onClick={handleSearch}
+              className="!h-12 !w-12 self-end md:self-auto"
+            />
           </div>
         </div>
       </div>

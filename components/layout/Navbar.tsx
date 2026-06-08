@@ -73,7 +73,7 @@ function NavbarThemePicker() {
       </Button>
 
       {open && (
-        <div className="absolute right-0 top-14 z-[120] w-[252px] rounded-2xl border border-gray-200 bg-white p-3 shadow-[0_12px_32px_rgba(16,24,40,.14)]">
+        <div className="absolute right-0 top-14 z-[120] w-[220px] rounded-2xl border border-gray-200 bg-white p-3 shadow-[0_12px_32px_rgba(16,24,40,.14)] sm:w-[252px]">
           <div className="mb-2 flex items-center justify-between gap-3">
             <div>
               <div className="text-xs font-semibold text-gray-900">Theme</div>
@@ -128,11 +128,11 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-[100] border-b border-[#f1f1f3] bg-white">
-      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center gap-4 px-4 md:gap-8 md:px-8">
-        <div className="flex min-w-0 items-center gap-8">
+      <div className="mx-auto flex h-[64px] max-w-[1280px] items-center gap-3 px-3 sm:h-[72px] sm:px-4 md:gap-8 md:px-8">
+        <div className="flex min-w-0 items-center gap-3 sm:gap-4 md:gap-8">
           <Link
             href="/"
-            className="shrink-0 text-[28px] font-extrabold tracking-[2px] text-primary-600"
+            className="shrink-0 text-[22px] font-extrabold tracking-[1.5px] text-primary-600 sm:text-[28px] sm:tracking-[2px]"
           >
             MONCAR
           </Link>
@@ -151,26 +151,30 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="ml-auto flex shrink-0 items-center gap-5">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3 md:gap-5">
           <NavbarThemePicker />
 
-          <Button
+          <div className="hidden md:block">
+            <Button
             href="/saved"
             variant="outline-white"
             size="sm"
             aria-label="Хадгалсан машинууд"
           >
             <HeartIcon />
-          </Button>
+            </Button>
+          </div>
 
-          <Button
+          <div className="hidden md:block">
+            <Button
             href="/post"
             size="sm"
             variant="outline-white"
             aria-label="Зар оруулах"            
           >
             <CirclePlus />
-          </Button>
+            </Button>
+          </div>
 
           {showAuthenticatedActions ? (
             <>
