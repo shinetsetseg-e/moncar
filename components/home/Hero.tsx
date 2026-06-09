@@ -9,7 +9,7 @@ import {
   RotateCcw,
   Search,
   SlidersHorizontal,
-  X
+  X,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -178,10 +178,6 @@ export default function Hero() {
     120_000_000,
   ]);
 
-  const totalModels = useMemo(() => {
-    return Object.values(carData).reduce((sum, models) => sum + models.length, 0);
-  }, []);
-
   const filteredBrands = useMemo(() => {
     const query = normalizeText(brandQuery);
 
@@ -284,56 +280,68 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[calc(100svh-64px)] overflow-hidden bg-[#f6f7fb] px-4 py-8 md:px-8">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-25 blur-[2px]"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-        }}
-      />
-
-      <div className="absolute inset-0 bg-primary-50/20" />
-
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-128px)] w-full max-w-6xl flex-col items-center justify-center text-center">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-4 py-2 text-sm font-semibold text-gray-600 shadow-sm backdrop-blur">
-          <Car className="h-4 w-4 text-primary-600" />
-          Монголын авто зарын нэгдсэн систем
+    <section className="relative overflow-hidden bg-white">
+      <div className="relative h-[80svh] min-h-[560px] overflow-visible bg-gray-950">
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className="h-full w-full bg-cover bg-[62%_center] md:bg-center"
+            style={{
+              backgroundImage:
+                "url(https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+            }}
+          />
         </div>
 
-        <h1 className="m-0 max-w-5xl text-4xl font-black leading-[0.95] tracking-[-0.06em] text-gray-950 sm:text-5xl md:text-7xl">
-          Хязгааргүй сонголтыг
-          <span className="relative mx-2 inline-block text-primary-600">
-            ухаалгаар
-            <span className="absolute -bottom-2 left-0 -z-10 h-4 w-full rounded-full bg-primary-200/80" />
-          </span>
-          шийднэ
-        </h1>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/5" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
 
-        <button
-          type="button"
-          onClick={() => setIsSearchOpen(true)}
-          className="group mt-10 flex w-full max-w-3xl items-center gap-3 rounded-[30px] border border-gray-200 bg-white p-3 text-left shadow-[0_24px_90px_rgba(15,23,42,0.13)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_34px_110px_rgba(15,23,42,0.2)] md:rounded-full"
-        >
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-950 text-white transition group-hover:scale-105">
-            <Search className="h-5 w-5" />
-          </span>
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl items-center px-4 md:px-8">
+          <div className="max-w-3xl pt-6 text-left md:pt-10">
+            <h1 className="m-0 text-4xl font-black leading-[1.06] tracking-[-0.055em] text-white sm:text-5xl md:text-7xl">
+              Хязгааргүй сонголтыг
+              <br />
+              ухаалгаар
+              <br />
+              шийднэ
+            </h1>
 
-          <span className="min-w-0 flex-1">
-            <span className="block text-xs font-black uppercase tracking-[0.18em] text-gray-400">
-              Хайлт эхлүүлэх
+            <button
+              type="button"
+              className="mt-8 inline-flex h-12 items-center justify-center border border-white/70 bg-transparent px-6 text-sm font-bold text-white transition hover:bg-white hover:text-gray-950"
+            >
+              Дэлгэрэнгүй харах
+            </button>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-1/2 z-20 w-full max-w-5xl -translate-x-1/2 translate-y-[45%] px-4">
+          <button
+            type="button"
+            onClick={() => setIsSearchOpen(true)}
+            className="group mx-auto flex w-full items-center gap-3 rounded-[32px] border border-gray-100 bg-white p-3 text-left shadow-[0_28px_90px_rgba(15,23,42,0.22)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_34px_120px_rgba(15,23,42,0.28)] md:max-w-3xl md:rounded-full"
+          >
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-950 text-white transition group-hover:scale-105">
+              <Search className="h-5 w-5" />
             </span>
-            <span className="mt-1 block truncate text-base font-black text-gray-950 md:text-lg">
-              {searchLabel}
-            </span>
-          </span>
 
-          <span className="hidden h-12 items-center gap-2 rounded-full bg-primary-600 px-5 text-sm font-black text-white md:flex">
-            Хайх
-            <ArrowRight className="h-4 w-4" />
-          </span>
-        </button>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-black uppercase tracking-[0.18em] text-gray-400">
+                Хайлт эхлүүлэх
+              </span>
+              <span className="mt-1 block truncate text-base font-black text-gray-950 md:text-lg">
+                {searchLabel}
+              </span>
+            </span>
+
+            <span className="hidden h-12 items-center gap-2 rounded-full bg-primary-600 px-5 text-sm font-black text-white md:flex">
+              Хайх
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </button>
+        </div>
       </div>
+
+      <div className="h-20 bg-white md:h-24" />
 
       <div
         className={[
@@ -541,10 +549,7 @@ export default function Hero() {
                       <Car className="h-7 w-7 text-gray-400" />
                     </div>
                     <p className="m-0 text-lg font-black text-gray-950">
-                      Загвар сонгохгүйгээр хайж болно
-                    </p>
-                    <p className="m-0 mt-2 max-w-sm text-sm leading-6 text-gray-500">
-                      Зөвхөн үнийн хүрээгээ тохируулаад шууд хайх боломжтой.
+                      Машины марк сонгоно уу
                     </p>
                   </div>
                 ) : (
@@ -621,9 +626,6 @@ export default function Hero() {
                   <h2 className="m-0 text-2xl font-black tracking-[-0.04em]">
                     Үнэ
                   </h2>
-                  <p className="mt-2 text-sm leading-6 text-white/55">
-                    Зөвхөн үнийн хүрээгээр хайсан ч болно.
-                  </p>
                 </div>
 
                 <div className="rounded-[28px] bg-white p-5 text-gray-950">
