@@ -305,12 +305,12 @@ export default function Hero() {
               шийднэ
             </h1>
 
-            <button
-              type="button"
-              className="mt-8 inline-flex h-12 items-center justify-center border border-white/70 bg-transparent px-6 text-sm font-bold text-white transition hover:bg-white hover:text-gray-950"
+            <Button
+              onClick={() => router.push("/marketplace")}
+              className="mt-8 !bg-transparent px-6 text-sm font-bold !text-white transition hover:bg-white hover:text-gray-950"
             >
-              Дэлгэрэнгүй харах
-            </button>
+              Дэлгэрэнгүй
+            </Button>
           </div>
         </div>
 
