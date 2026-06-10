@@ -109,3 +109,7 @@ textarea {
 *::after {
   box-sizing: border-box;
 }
+
+.brand-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
