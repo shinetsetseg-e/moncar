@@ -151,28 +151,18 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3 md:gap-5">
+        <div className="ml-auto flex shrink-0 items-center gap-3">
           <NavbarThemePicker />
 
           <div className="hidden md:block">
-            <Button
-            href="/saved"
-            variant="outline-white"
-            size="sm"
-            aria-label="Хадгалсан машинууд"
-          >
-            <HeartIcon />
+            <Button href="/saved" variant="outline-white" size="sm" aria-label="Хадгалсан машинууд">
+              <HeartIcon />
             </Button>
           </div>
 
           <div className="hidden md:block">
-            <Button
-            href="/post"
-            size="sm"
-            variant="outline-white"
-            aria-label="Зар оруулах"            
-          >
-            <CirclePlus />
+            <Button href="/post" size="sm" variant="outline-white" aria-label="Зар оруулах">
+              <CirclePlus />
             </Button>
           </div>
 
@@ -187,25 +177,20 @@ export default function Navbar() {
                 <BellIcon />
               </Button>
 
-              <Button
-                href="/profile"
-                variant="outline-white"
-                size="sm"
-                aria-label="Миний профайл"
-              >
+              <Button href="/profile" variant="outline-white" size="sm" aria-label="Миний профайл">
                 <UserIcon />
               </Button>
             </>
           ) : (
-          <Button
-            href="/auth"
-            size="sm"
-            variant="primary"
-            aria-label="Зар оруулах"
-            className="!rounded-full !h-12 !w-12 !p-0"
-          >
-            <LogInIcon  />
-          </Button>
+            <Button
+              href="/auth"
+              size="sm"
+              variant="primary"
+              aria-label="Зар оруулах"
+              className="!rounded-full !h-9 !w-9 !p-0"
+            >
+              <LogInIcon />
+            </Button>
           )}
         </div>
       </div>
