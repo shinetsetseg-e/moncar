@@ -113,3 +113,22 @@ textarea {
 .brand-swiper .swiper-wrapper {
   transition-timing-function: linear !important;
 }
+
+.custom-pagination {
+  position: relative !important;
+  bottom: 0 !important;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0 8px !important;
+  background: #d1d5db;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background: #111827;
+  transform: scale(1.3);
+}
